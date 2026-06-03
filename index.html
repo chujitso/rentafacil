@@ -36,7 +36,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .cd-hl{border-left:4px solid var(--pri);background:var(--pri-50)}
 .cd-wrn{border-left:4px solid var(--warn);background:var(--warn-l)}
 .cd-ok{border-left:4px solid var(--ok);background:var(--ok-l)}
-.cd-err{border-left:4px solid var(--err);background:var(--err-l)}
 .fg{margin-bottom:16px}
 .fl{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--g700);margin-bottom:5px}
 .fh{font-size:11px;color:var(--g400);margin-top:3px}
@@ -103,14 +102,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .mh2{width:36px;height:4px;background:var(--g300);border-radius:2px;margin:0 auto 16px}
 .mt2{font-size:20px;font-weight:800;color:var(--g900);margin-bottom:6px}
 .md2{font-size:13px;color:var(--g500);margin-bottom:20px;line-height:1.6}
-.pp{text-align:center;padding:16px;background:var(--acc-l);border-radius:var(--r);margin-bottom:16px}
-.pp .pa{font-size:32px;font-weight:900;color:var(--acc)}
-.pp .pp2{font-size:12px;color:var(--g500)}
-.pm{display:flex;gap:8px;margin-bottom:16px}
-.pm2{flex:1;padding:12px 6px;border:2px solid var(--g200);border-radius:var(--r);text-align:center;cursor:pointer;transition:all .2s;background:var(--w)}
-.pm2:hover,.pm2.sel{border-color:var(--pri);background:var(--pri-l)}
-.pm2 i{font-size:20px;display:block;margin-bottom:4px}
-.pm2 span{font-size:11px;font-weight:600}
 .tg{display:flex;align-items:center;gap:10px;padding:10px 0}
 .tg2{position:relative;width:40px;height:22px}
 .tg2 input{opacity:0;width:0;height:0}
@@ -141,7 +132,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .info-box.pri{background:var(--pri-l);color:var(--pri-d);border:1px solid rgba(10,123,66,.15)}
 .info-box.wrn{background:var(--warn-l);color:#92400E;border:1px solid rgba(245,158,11,.15)}
 .info-box.ok{background:var(--ok-l);color:#065F46;border:1px solid rgba(5,150,105,.15)}
-.info-box.err{background:var(--err-l);color:#991B1B;border:1px solid rgba(220,38,38,.15)}
 .lock-icon{font-size:10px;color:var(--acc);margin-left:2px}
 @media(min-width:640px){.mc{padding:24px 20px}.mo{align-items:center}.mc2{border-radius:20px;max-height:80vh}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
@@ -159,7 +149,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="sd" data-s="3">4</div><div class="sl"></div>
 <div class="sd" data-s="4">5</div>
 </div>
-<button class="hb" id="btnCfg" aria-label="Configuración"><i class="fas fa-cog"></i></button>
+<button class="hb" id="btnCfg" aria-label="Configuracion"><i class="fas fa-cog"></i></button>
 </header>
 
 <main class="mc">
@@ -168,8 +158,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section class="ss act" id="s0">
 <div class="wh">
 <div class="wi"><i class="fas fa-calculator"></i></div>
-<h2>Calcula tu declaración de renta</h2>
-<p>En 5 minutos sabrás si debes declarar, cuánto pagas o cuánto te devuelven.</p>
+<h2>Calcula tu declaracion de renta</h2>
+<p>En 5 minutos sabras si debes declarar, cuanto pagas o cuanto te devuelven.</p>
 </div>
 <div class="cd">
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:12px">
@@ -253,36 +243,26 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <section class="ss" id="s4">
 <div id="resH" class="rh neu"><div class="rh-l" id="resL">IMPUESTO ESTIMADO</div><div class="rh-a" id="resA">$0</div><div class="rh-sub" id="resS"></div></div>
 <div id="obB" style="text-align:center;margin-bottom:12px"></div>
-
-<!-- Explicacion cuando es $0 -->
 <div id="zeroBox" class="cd cd-ok" style="display:none">
 <div class="cd-t"><i class="fas fa-info-circle" style="color:var(--ok)"></i> Por que tu impuesto es $0</div>
 <div id="zeroReason" style="font-size:13px;color:var(--g600);line-height:1.7"></div>
 </div>
-
-<!-- Barra visual de tramo -->
 <div class="cd" id="bracketCard" style="display:none">
 <div class="cd-t">En que tramo estas</div>
 <div class="bracket-bar"><div class="b0" style="flex:1090">0%</div><div class="b1" style="flex:610">19%</div><div class="b2" style="flex:1400">28%</div><div class="b3" style="flex:1400">33%</div><div class="b4" style="flex:1">39%</div></div>
 <div style="text-align:center;font-size:13px;font-weight:700;color:var(--g800);margin:6px 0" id="bracketInfo"></div>
 <div class="bracket-legend"><span><i style="background:#94a3b8"></i>0-1.090 UVT</span><span><i style="background:#0A7B42"></i>1.090-1.700</span><span><i style="background:#D97706"></i>1.700-3.100</span><span><i style="background:#EA580C"></i>3.100-4.500</span><span><i style="background:#DC2626"></i>>4.500</span></div>
 </div>
-
 <div class="cd"><div class="cd-t">Depuracion de tu renta paso a paso</div><div class="cd-s">Arts. 335, 336 y 337 del Estatuto Tributario</div><table class="dt" id="depT"></table></div>
-
-<!-- GUIA DE CASILLAS:Solo visible si pago -->
 <div class="cd" id="casCard" style="display:none"><div class="cd-t"><i class="fas fa-lock lock-icon"></i> Guia para tu Formulario 210</div><div class="cd-s">Copia estos valores en las casillas de la DIAN — Disponible con la descarga del PDF</div><table class="dt" id="casT"></table></div>
-
 <div style="display:flex;flex-direction:column;gap:8px;margin-top:20px">
-<button class="btn btn-pay btn-blk" style="padding:16px" id="btnPDF"><i class="fas fa-file-pdf"></i> Descargar Hoja de Trabajo PDF — $4.900</button>
+<button class="btn btn-p btn-blk" style="padding:16px;font-size:16px" id="btnPDF"><i class="fas fa-file-pdf"></i> Descargar Hoja de Trabajo PDF</button>
 <button class="btn btn-wa btn-blk" style="padding:16px" id="btnWA"><i class="fab fa-whatsapp"></i> Enviar resumen a mi contador (gratis)</button>
 <button class="btn btn-s btn-blk" id="btnRst"><i class="fas fa-redo"></i> Nuevo calculo</button>
 </div>
-
 <div class="info-box wrn" style="font-size:11px;margin-top:12px">
 <i class="fas fa-exclamation-triangle" style="color:var(--warn)"></i> <b>Que envia WhatsApp vs el PDF:</b> WhatsApp envia solo un resumen de 4 lineas (renta gravable, impuesto, retenciones, saldo) para que tu contador sepa si vale la pena atenderte. El PDF tiene la guia completa casilla por casilla del Formulario 210 que te ahorra horas llenando la DIAN.
 </div>
-
 <div class="cd cd-wrn" style="font-size:11px;color:var(--g600);line-height:1.6"><b style="color:var(--warn)">Aviso:</b> Esta hoja de trabajo es una guia informativa y no constituye una declaracion oficial. Los calculos se basan en la normativa vigente y el UVT asumido ($47.000 para 2026). Verifica con un contador publico antes de presentar ante la DIAN.</div>
 </section>
 
@@ -306,20 +286,49 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 </div>
 
-<!-- MODAL PAGO -->
+<!-- MODAL PAGO WOMPI PREMIUM -->
 <div class="mo" id="mPay">
-<div class="mc2"><div class="mh2"></div>
-<div class="mt2">Desbloquea tu Hoja de Trabajo</div>
-<div class="md2">El calculo fue gratis. Por solo $4.900 descarga la guia completa casilla por casilla del Formulario 210.</div>
-<div class="pp"><div class="pa">$4.900</div><div class="pp2">Pago unico · Guia en PDF</div></div>
-<div class="pm">
-<div class="pm2 sel" data-m="nequi"><i class="fas fa-wallet" style="color:#8B5CF6"></i><span>Nequi</span></div>
-<div class="pm2" data-m="wompi"><i class="fas fa-credit-card" style="color:#2563EB"></i><span>Tarjeta</span></div>
-<div class="pm2" data-m="pse"><i class="fas fa-university" style="color:var(--pri)"></i><span>PSE</span></div>
-</div>
-<button class="btn btn-pay btn-blk" style="padding:16px" id="btnConfPay"><i class="fas fa-lock"></i> Pagar y descargar PDF</button>
-<button class="btn btn-s btn-blk" style="margin-top:6px" id="btnClsPay">Volver sin descargar</button>
-<div style="text-align:center;margin-top:10px;font-size:11px;color:var(--g400)"><i class="fas fa-shield-alt"></i> Pago seguro · Tus datos no salen de tu dispositivo</div>
+<div class="mc2" style="background:#FAFAFA;border-radius:24px 24px 0 0">
+  <div class="mh2"></div>
+  <div style="text-align:center;margin-bottom:24px">
+    <div style="width:72px;height:72px;background:linear-gradient(135deg,#7C3AED,#4C1D95);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 20px rgba(107,33,168,.25)">
+      <i class="fas fa-file-invoice-dollar" style="color:#fff;font-size:28px"></i>
+    </div>
+    <h2 style="font-size:22px;font-weight:800;color:#111827;margin:0 0 6px">Desbloquea tu Hoja de Trabajo</h2>
+    <p style="font-size:14px;color:#6B7280;margin:0;line-height:1.5">El calculo fue gratis. Descarga la guia completa con todas las casillas para copiar y pegar en la DIAN.</p>
+  </div>
+  <div style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div>
+        <div style="font-size:15px;font-weight:700;color:#111827">Guia Formulario 210</div>
+        <div style="font-size:12px;color:#9CA3AF">PDF Descargable · Casilla por casilla</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:12px;color:#9CA3AF;text-decoration:line-through">$25.000</div>
+        <div style="font-size:18px;font-weight:900;color:#7C3AED">$4.900</div>
+      </div>
+    </div>
+    <div style="border-top:1px dashed #E5E7EB;margin:14px 0"></div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#374151">
+      <div style="display:flex;align-items:center;gap:8px"><i class="fas fa-check-circle" style="color:#10B981"></i> Ahorra horas buscando que casilla llenar</div>
+      <div style="display:flex;align-items:center;gap:8px"><i class="fas fa-check-circle" style="color:#10B981"></i> Valores exactos para copiar en la DIAN</div>
+      <div style="display:flex;align-items:center;gap:8px"><i class="fas fa-check-circle" style="color:#10B981"></i> Depuracion paso a paso explicada</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-bottom:16px">
+    <div style="font-size:11px;color:#9CA3AF;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;font-weight:600">Metodos de pago aceptados</div>
+    <div style="display:flex;justify-content:center;gap:14px;align-items:center">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-wallet" style="font-size:18px;color:#8B5CF6"></i><span style="font-size:9px;color:#6B7280">Nequi</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-mobile-alt" style="font-size:18px;color:#EF4444"></i><span style="font-size:9px;color:#6B7280">Daviplata</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-credit-card" style="font-size:18px;color:#2563EB"></i><span style="font-size:9px;color:#6B7280">Tarjetas</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-university" style="font-size:18px;color:#059669"></i><span style="font-size:9px;color:#6B7280">PSE</span></div>
+    </div>
+  </div>
+  <button class="btn btn-blk" id="btnWompiPay" style="padding:20px 24px;border-radius:14px;background:linear-gradient(135deg,#7C3AED,#6D28D9);color:#fff;font-size:18px;font-weight:800;box-shadow:0 6px 20px rgba(109,40,217,.35);letter-spacing:.3px">
+    <i class="fas fa-lock" style="font-size:16px"></i> Pagar $4.900 COP
+  </button>
+  <button class="btn btn-blk" id="btnClsPay" style="margin-top:10px;border:none;background:transparent;color:#9CA3AF;font-weight:500;font-size:13px">Volver sin descargar</button>
+  <div style="text-align:center;margin-top:12px;font-size:10px;color:#D1D5DB"><i class="fas fa-shield-alt"></i> Transaccion 100% segura procesada por Wompi</div>
 </div>
 </div>
 
@@ -330,54 +339,19 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 (function(){
 'use strict';
 
-// ================================================================
-// 1. CONSTANTES TRIBUTARIAS COLOMBIA
-// ================================================================
-
-/**
- * UVT 2026 - Asumido en $47.000 COP.
- * Si la DIAN publica un valor diferente, se edita en Configuracion.
- */
 var UVT = 47000;
 var ANIO = 2025;
 var DEMO = true;
 var PAGADO = false;
 
-/**
- * Topes deducibles en UVT (Arts. 119, 257, 387, 388 ET)
- * Estos son los maximos que puedes deducir por concepto
- */
-var TOPES = { salud:25, pension:25, donaciones:30, vivienda:100, dependientes:32 };
+// URL de pago Wompi - REEMPLAZA con tu enlace real
+var WOMPI_URL = 'https://wompi.co';
 
-/**
- * Exencion laboral: 25% del ingreso laboral, tope 1.340 UVT
- * Art. 206 ET, numeral 10.
- * Esto significa que por cada $100 de ingreso laboral, $25 no pagan impuesto.
- * Pero el maximo de esta exencion es 1.340 UVT = $62.980.000
- */
+var TOPES = { salud:25, pension:25, donaciones:30, vivienda:100, dependientes:32 };
 var EX_PCT = 0.25;
 var EX_TOPE = 1340;
-
-/**
- * Topes de obligacion de declarar en UVT (Art. 594-1 ET)
- * Si superas CUALQUIERA de estos, estas obligado a declarar.
- */
 var OBL_UVT = { patrimonio:4900, ingresos:1390, consumos:1400, consignaciones:1400, compras:1400 };
 
-/**
- * Tabla progresiva del Impuesto sobre la Renta
- * Art. 241 ET (modificado por Ley 2277 de 2022)
- *
- * COMO FUNCIONA:
- * 1. Tu renta gravable se convierte a UVT (dividiendo por $47.000)
- * 2. Se busca en que rango de la tabla cae
- * 3. Se aplica: Impuesto_UVT = (Renta_UVT x Tarifa%) - Deduccion_UVT
- * 4. Se convierte de vuelta a pesos: Impuesto = Impuesto_UVT x UVT
- *
- * EJEMPLO con renta de 1.500 UVT (tramo 19%):
- *   Impuesto = (1.500 x 19%) - 207.1 = 285 - 207.1 = 77.9 UVT
- *   En pesos = 77.9 x $47.000 = $3.661.300
- */
 var TABLA = [
     { desde:0,    hasta:1090,     tarifa:0,  ded:0     },
     { desde:1090, hasta:1700,     tarifa:19, ded:207.1 },
@@ -386,22 +360,12 @@ var TABLA = [
     { desde:4500, hasta:Infinity, tarifa:39, ded:785.1 }
 ];
 
-// ================================================================
-// 2. UTILIDADES
-// ================================================================
-
 function fCOP(v){if(v===0||v==null)return '$0';var r=Math.round(Math.abs(v));return(v<0?'-':'')+'$'+r.toLocaleString('es-CO')}
 function pI(id){var e=document.getElementById(id);if(!e)return 0;var n=parseInt(e.value.replace(/\D/g,''),10);return isNaN(n)?0:n}
 function fIV(inp){if(!inp)return;var r=inp.value.replace(/\D/g,'');if(!r){inp.value='';return}inp.value=parseInt(r,10).toLocaleString('es-CO')}
 function toast(m,t,d){t=t||'info';d=d||3500;var c=document.getElementById('tC'),e=document.createElement('div');e.className='tst '+t;e.textContent=m;c.appendChild(e);setTimeout(function(){e.classList.add('out');setTimeout(function(){e.remove()},300)},d)}
 function sinT(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
-
-// Establecer valor en campo (para demo)
 function sI(id,val){var e=document.getElementById(id);if(e)e.value=val.toLocaleString('es-CO')}
-
-// ================================================================
-// 3. VERIFICACION DE OBLIGACION (Art. 594-1 ET)
-// ================================================================
 
 function checkObl(){
     var pat=pI('iPat'),ing=pI('iIng'),cons=pI('iCons'),consi=pI('iConsi'),comp=pI('iComp');
@@ -415,157 +379,65 @@ function checkObl(){
     if(pat===0&&ing===0&&cons===0&&consi===0&&comp===0){el.className='obl-r';el.innerHTML='';return{obl:false,razones}}
     el.className='obl-r show '+(obl?'yes':'no');
     if(obl){
-        var h='<h3><i class="fas fa-exclamation-triangle"></i> Estás obligado a declarar</h3><p>Cumple al menos un tope de ley:</p><ul>';
+        var h='<h3><i class="fas fa-exclamation-triangle"></i> Estas obligado a declarar</h3><p>Cumple al menos un tope de ley:</p><ul>';
         razones.forEach(function(r){h+='<li><i class="fas fa-check" style="color:var(--err)"></i> '+r+'</li>'});
         h+='</ul><p style="margin-top:10px;font-weight:600">Continua para calcular tu impuesto.</p>';el.innerHTML=h;
     }else{
-        el.innerHTML='<h3><i class="fas fa-check-circle"></i> No estás obligado a declarar</h3><p>Ninguno de tus valores supera los topes de ley. Puedes declarar voluntariamente si lo deseas.</p>';
+        el.innerHTML='<h3><i class="fas fa-check-circle"></i> No estas obligado a declarar</h3><p>Ninguno de tus valores supera los topes de ley. Puedes declarar voluntariamente si lo deseas.</p>';
     }
     return{obl:obl,razones:razones};
 }
 
-// ================================================================
-// 4. MOTOR DE CALCULO TRIBUTARIO COMPLETO
-// ================================================================
-
 function calcular(){
-    // --- Recopilar ingresos ---
     var sal=pI('iSal'),penR=pI('iPenR'),hon=pI('iHon'),cos=pI('iCos');
     var div=pI('iDiv'),arr=pI('iArr'),otrI=pI('iOtrI');
     var ret=pI('iRet')+pI('iRetI')+pI('iRetO');
-
-    // --- Recopilar deducciones ---
     var dS=pI('iSalud'),dP=pI('iPV'),dV=pI('iViv'),dD=pI('iDon'),dDp=pI('iDep');
 
-    // =============================================
-    // PASO 1: Ingresos Brutos (Art. 335 ET)
-    // Total de ingresos antes de cualquier descuento
-    // =============================================
-    var ingLab=sal+penR;       // Ingresos laborales: salarios + pensiones
-    var ingHon=hon;            // Ingresos por honorarios
-    var ingNoLab=arr+otrI;    // Ingresos no laborales: arriendos + otros
+    var ingLab=sal+penR;
+    var ingHon=hon;
+    var ingNoLab=arr+otrI;
     var ingBrutos=ingLab+ingHon+div+ingNoLab;
 
-    // =============================================
-    // PASO 2: Exencion laboral 25% (Art. 206 ET, num. 10)
-    // La ley dice que el 25% de tu ingreso laboral NO paga impuesto.
-    // Pero este descuento tiene un tope: 1.340 UVT = $62.980.000
-    //
-    // EJEMPLO: Si ganas $80.000.000:
-    //   25% = $20.000.000 (no supera el tope de $62.980.000)
-    //   Solo tributas por $60.000.000
-    //
-    // EJEMPLO: Si ganas $300.000.000:
-    //   25% = $75.000.000 → pero el tope es $62.980.000
-    //   Solo se descuentan $62.980.000
-    // =============================================
     var exLabSinTope=ingLab*EX_PCT;
     var topeExLab=EX_TOPE*UVT;
     var exLab=Math.min(exLabSinTope,topeExLab);
-
-    // =============================================
-    // PASO 3: Ingreso Neto Laboral
-    // Es lo que queda despues de la exencion
-    // =============================================
     var ingNetLab=Math.max(0,ingLab-exLab);
 
-    // =============================================
-    // PASO 4: Deducciones con topes UVT
-    // Cada tipo de deduccion tiene un tope maximo en UVT.
-    // Si ingresas mas del tope, solo se deduce hasta el tope.
-    //
-    // Topes (Arts. 387, 388, 119, 257 ET):
-    //   Salud:         25 UVT = $1.175.000
-    //   Pension/AFC:   25 UVT = $1.175.000
-    //   Vivienda:     100 UVT = $4.700.000
-    //   Donaciones:    30 UVT = $1.410.000
-    //   Dependientes:  32 UVT = $1.504.000 (x2 = $3.008.000)
-    // =============================================
-    var tS=TOPES.salud*UVT;
-    var tP=TOPES.pension*UVT;
-    var tV=TOPES.vivienda*UVT;
-    var tD=TOPES.donaciones*UVT;
-    var tDp=TOPES.dependientes*2*UVT;
-
-    var aS=Math.min(dS,tS);   // Salud aplicada (con tope)
-    var aP=Math.min(dP,tP);   // Pension voluntaria aplicada
-    var aV=Math.min(dV,tV);   // Intereses vivienda aplicados
-    var aD=Math.min(dD,tD);   // Donaciones aplicadas
-    var aDp=Math.min(dDp,tDp); // Dependientes aplicados
-
+    var tS=TOPES.salud*UVT,tP=TOPES.pension*UVT,tV=TOPES.vivienda*UVT;
+    var tD=TOPES.donaciones*UVT,tDp=TOPES.dependientes*2*UVT;
+    var aS=Math.min(dS,tS),aP=Math.min(dP,tP),aV=Math.min(dV,tV);
+    var aD=Math.min(dD,tD),aDp=Math.min(dDp,tDp);
     var totDed=aS+aP+aV+aD+aDp;
 
-    // =============================================
-    // PASO 5: Renta Liquida del Trabajo (Art. 335 ET)
-    // Ingreso neto laboral MENOS deducciones
-    // =============================================
     var rlTrab=Math.max(0,ingNetLab-totDed);
-
-    // PASO 5b: Renta de Honorarios
     var rlHon=Math.max(0,ingHon-cos);
-
-    // PASO 5c: Renta No Laboral
     var rlNoLab=ingNoLab;
-
-    // PASO 5d: Dividendos gravados
     var rlDiv=div;
-
-    // =============================================
-    // PASO 6: Renta Gravable Total
-    // Base sobre la cual se calcula el impuesto
-    // =============================================
     var rentaG=rlTrab+rlHon+rlNoLab+rlDiv;
 
-    // =============================================
-    // PASO 7: Tabla progresiva (Art. 241 ET)
-    // Se convierte la renta gravable a UVT
-    // Se busca el tramo correspondiente
-    // Se aplica la formula del tramo
-    //
-    // IMPORTANTE: El primer tramo (0-1.090 UVT) es 0%.
-    // Esto significa que si tu renta gravable es menor a
-    // 1.090 UVT ($51.230.000), NO pagas NADA de impuesto.
-    //
-    // Para un asalariado, la renta gravable es el 75% del salario
-    // (despues de la exencion del 25%).
-    // Entonces necesitas ganar mas de $68.3 millones en salario
-    // para que tu renta gravable supere 1.090 UVT y empieces
-    // a pagar impuesto.
-    // =============================================
     var rUVT=rentaG/Math.max(1,UVT);
-    var impUVT=0, tarifa=0, tramoNum=0;
+    var impUVT=0,tarifa=0,tramoNum=0;
     for(var i=0;i<TABLA.length;i++){
         if(rUVT>TABLA[i].desde){
             impUVT=(rUVT*TABLA[i].tarifa/100)-TABLA[i].ded;
-            tarifa=TABLA[i].tarifa;
-            tramoNum=i;
+            tarifa=TABLA[i].tarifa;tramoNum=i;
         }
     }
     impUVT=Math.max(0,impUVT);
     var impCalc=Math.round(impUVT*Math.max(1,UVT));
-
-    // =============================================
-    // PASO 8: Saldo a pagar o a favor
-    // Si te retuvieron mas de lo que debes → TE DEVUELVEN
-    // Si te retuvieron menos → PAGAS la diferencia
-    // Si es 0 → Ni pagas ni te devuelven
-    // =============================================
     var saldo=impCalc-ret;
 
     return{
-        ingLab:ingLab, ingHon:ingHon, ingNoLab:ingNoLab, div:div, ingBrutos:ingBrutos,
-        exLabSinTope:exLabSinTope, exLab:exLab, topeExLab:topeExLab, ingNetLab:ingNetLab,
-        dS:dS, aS:aS, tS:tS, dP:dP, aP:aP, tP:tP, dV:dV, aV:aV, tV:tV,
-        dD:dD, aD:aD, tD:tD, dDp:dDp, aDp:aDp, tDp:tDp, totDed:totDed,
-        rlTrab:rlTrab, rlHon:rlHon, rlNoLab:rlNoLab, rlDiv:rlDiv,
-        rentaG:rentaG, rUVT:rUVT, tarifa:tarifa, tramoNum:tramoNum,
-        impCalc:impCalc, ret:ret, saldo:saldo
+        ingLab:ingLab,ingHon:ingHon,ingNoLab:ingNoLab,div:div,ingBrutos:ingBrutos,
+        exLabSinTope:exLabSinTope,exLab:exLab,topeExLab:topeExLab,ingNetLab:ingNetLab,
+        dS:dS,aS:aS,tS:tS,dP:dP,aP:aP,tP:tP,dV:dV,aV:aV,tV:tV,
+        dD:dD,aD:aD,tD:tD,dDp:dDp,aDp:aDp,tDp:tDp,totDed:totDed,
+        rlTrab:rlTrab,rlHon:rlHon,rlNoLab:rlNoLab,rlDiv:rlDiv,
+        rentaG:rentaG,rUVT:rUVT,tarifa:tarifa,tramoNum:tramoNum,
+        impCalc:impCalc,ret:ret,saldo:saldo
     };
 }
-
-// ================================================================
-// 5. ACTUALIZACION EN TIEMPO REAL
-// ================================================================
 
 function updateRunning(){
     var r=calcular();
@@ -573,22 +445,16 @@ function updateRunning(){
     if(r.rUVT>0){
         el.textContent=r.rUVT.toFixed(1)+' UVT';
         el.className='am'+(r.saldo<0?' ref':r.saldo>0?' pay':' zero');
-    }else{
-        el.textContent='0 UVT';el.className='am zero';
-    }
+    }else{el.textContent='0 UVT';el.className='am zero'}
 }
 
 function updateCaps(){
     var dS=pI('iSalud'),dP=pI('iPV'),dV=pI('iViv'),dD=pI('iDon'),dDp=pI('iDep');
     var tS=TOPES.salud*UVT,tP=TOPES.pension*UVT,tV=TOPES.vivienda*UVT;
     var tD=TOPES.donaciones*UVT,tDp=TOPES.dependientes*2*UVT;
-    setCap('cS',dS,tS,'cSv','cSm');
-    setCap('cP',dP,tP,'cPv','cPm');
-    setCap('cV',dV,tV,'cVv','cVm');
-    setCap('cD',dD,tD,'cDv','cDm');
+    setCap('cS',dS,tS,'cSv','cSm');setCap('cP',dP,tP,'cPv','cPm');
+    setCap('cV',dV,tV,'cVv','cVm');setCap('cD',dD,tD,'cDv','cDm');
     setCap('cDp',dDp,tDp,'cDpv','cDpm');
-
-    // Exencion laboral
     var ingLab=pI('iSal')+pI('iPenR');
     var ex=Math.min(ingLab*EX_PCT,EX_TOPE*UVT);
     document.getElementById('exD').textContent=fCOP(ex);
@@ -605,16 +471,10 @@ function setCap(barId,val,max,valId,maxId){
     document.getElementById(maxId).textContent='Tope: '+fCOP(max);
 }
 
-// ================================================================
-// 6. NAVEGACION DEL WIZARD
-// ================================================================
-
-var step=0;
-var TOTAL=5;
+var step=0;var TOTAL=5;
 
 function goStep(s){
-    // Validacion: en paso 0, al menos un valor
-    if(s>0 && step===0){
+    if(s>0&&step===0){
         if(pI('iPat')===0&&pI('iIng')===0&&pI('iCons')===0&&pI('iConsi')===0&&pI('iComp')===0){
             toast('Ingresa al menos tu patrimonio o ingresos para continuar','err');return;
         }
@@ -623,40 +483,23 @@ function goStep(s){
     step=Math.max(0,Math.min(TOTAL-1,s));
     document.querySelectorAll('.ss').forEach(function(e){e.classList.remove('act')});
     document.getElementById('s'+step).classList.add('act');
-
-    // Actualizar indicadores
     document.querySelectorAll('.sd').forEach(function(d,i){
         d.className='sd'+(i===step?' act':i<step?' done':'');
         if(i<step)d.innerHTML='<i class="fas fa-check" style="font-size:10px"></i>';else d.textContent=i+1;
     });
     document.querySelectorAll('.sl').forEach(function(l,i){l.className='sl'+(i<step?' done':'')});
     document.getElementById('btnPrev').disabled=step===0;
-
     var nb=document.getElementById('btnNext');
-    if(step===TOTAL-1){
-        nb.innerHTML='<i class="fas fa-check"></i> Ver resultado';
-    }else{
-        nb.innerHTML='Siguiente <i class="fas fa-arrow-right"></i>';
-    }
-
+    if(step===TOTAL-1){nb.innerHTML='<i class="fas fa-check"></i> Ver resultado';}
+    else{nb.innerHTML='Siguiente <i class="fas fa-arrow-right"></i>';}
     window.scrollTo({top:0,behavior:'smooth'});
     if(step===3)updateCaps();
 }
 
-// ================================================================
-// 7. MOSTRAR RESULTADO COMPLETO
-// ================================================================
-
 function showResult(){
-    var r=calcular();
-    window._lastResult=r;
-
-    // Hero
-    var h=document.getElementById('resH');
-    var lbl=document.getElementById('resL');
-    var amt=document.getElementById('resA');
-    var sub=document.getElementById('resS');
-
+    var r=calcular();window._lastResult=r;
+    var h=document.getElementById('resH'),lbl=document.getElementById('resL');
+    var amt=document.getElementById('resA'),sub=document.getElementById('resS');
     if(r.saldo<0){
         h.className='rh ref';lbl.textContent='TE DEVUELVEN';
         amt.textContent=fCOP(Math.abs(r.saldo));
@@ -671,58 +514,34 @@ function showResult(){
         amt.textContent='$0';
         sub.textContent='Tu renta gravable ('+r.rUVT.toFixed(1)+' UVT) esta en el tramo del 0%';
     }
-
-    // Badge obligacion
-    var ob=checkObl();
-    var obB=document.getElementById('obB');
-    if(ob.obl){
-        obB.innerHTML='<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:50px;font-weight:700;font-size:13px;background:var(--err-l);color:var(--err)"><i class="fas fa-exclamation-circle"></i> Obligado a declarar</span>';
-    }else{
-        obB.innerHTML='<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:50px;font-weight:700;font-size:13px;background:var(--ok-l);color:var(--ok)"><i class="fas fa-check-circle"></i> No obligado (declaracion voluntaria)</span>';
-    }
-
-    // Caja explicativa cuando es $0
-    var zeroBox=document.getElementById('zeroBox');
-    var zeroReason=document.getElementById('zeroReason');
+    var ob=checkObl();var obB=document.getElementById('obB');
+    if(ob.obl){obB.innerHTML='<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:50px;font-weight:700;font-size:13px;background:var(--err-l);color:var(--err)"><i class="fas fa-exclamation-circle"></i> Obligado a declarar</span>';}
+    else{obB.innerHTML='<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:50px;font-weight:700;font-size:13px;background:var(--ok-l);color:var(--ok)"><i class="fas fa-check-circle"></i> No obligado (declaracion voluntaria)</span>';}
+    var zeroBox=document.getElementById('zeroBox'),zeroReason=document.getElementById('zeroReason');
     if(r.impCalc===0){
-        zeroBox.style.display='block';
-        var reason='';
-        if(r.rentaG===0){
-            reason='<b>No tienes renta gravable.</b> Tus ingresos son $0 o estan completamente cubiertos por exenciones y deducciones.';
-        }else if(r.rUVT<1090){
-            reason='<b>Tu renta gravable es '+r.rUVT.toFixed(1)+' UVT, que esta por debajo de 1.090 UVT (el primer tramo gravable).</b><br><br>'+
-                'Esto significa que la ley colombiana te considera dentro del rango del 0% de impuesto. No pagas renta.<br><br>'+
+        zeroBox.style.display='block';var reason='';
+        if(r.rentaG===0){reason='<b>No tienes renta gravable.</b> Tus ingresos son $0 o estan completamente cubiertos por exenciones y deducciones.';}
+        else if(r.rUVT<1090){
+            reason='<b>Tu renta gravable es '+r.rUVT.toFixed(1)+' UVT, por debajo de 1.090 UVT (primer tramo gravable).</b><br><br>'+
+                'La ley colombiana te considera dentro del rango del 0%. No pagas renta.<br><br>'+
                 '<b>Como funciona:</b><br>'+
                 '1. Tus ingresos laborales: <b>'+fCOP(r.ingLab)+'</b><br>'+
                 '2. Menos exencion del 25%: <b>'+fCOP(r.exLab)+'</b><br>'+
                 '3. Menos deducciones: <b>'+fCOP(r.totDed)+'</b><br>'+
                 '4. Tu renta gravable: <b>'+fCOP(r.rentaG)+'</b> = <b>'+r.rUVT.toFixed(1)+' UVT</b><br>'+
                 '5. El tramo 0% va hasta 1.090 UVT = <b>'+fCOP(1090*UVT)+'</b><br><br>'+
-                (r.ingLab>0?'<b>Para empezar a pagar impuesto necesitas una renta gravable superior a '+fCOP(1090*UVT)+'. Con la exencion del 25%, eso equivale a un salario anual superior a '+fCOP(1090*UVT/0.75)+'.</b>':'');
+                (r.ingLab>0?'<b>Para empezar a pagar impuesto necesitas una renta gravable superior a '+fCOP(1090*UVT)+'. Con la exencion del 25%, equivale a un salario anual superior a '+fCOP(1090*UVT/0.75)+'.</b>':'');
         }
         zeroReason.innerHTML=reason;
-    }else{
-        zeroBox.style.display='none';
-    }
-
-    // Barra visual de tramo
-    var bracketCard=document.getElementById('bracketCard');
-    var bracketInfo=document.getElementById('bracketInfo');
+    }else{zeroBox.style.display='none';}
+    var bracketCard=document.getElementById('bracketCard'),bracketInfo=document.getElementById('bracketInfo');
     if(r.rentaG>0){
         bracketCard.style.display='block';
         var tramoTxt=['0% (Exento)','19%','28%','33%','39%'];
-        bracketInfo.innerHTML='Estás en el tramo del <b>'+tramoTxt[r.tramoNum]+'</b> — Renta: '+r.rUVT.toFixed(1)+' UVT';
-        // Resaltar tramo activo
+        bracketInfo.innerHTML='Estas en el tramo del <b>'+tramoTxt[r.tramoNum]+'</b> — Renta: '+r.rUVT.toFixed(1)+' UVT';
         var bars=bracketCard.querySelector('.bracket-bar').children;
-        for(var b=0;b<bars.length;b++){
-            bars[b].style.opacity=b===r.tramoNum?'1':'0.35';
-            bars[b].style.transform=b===r.tramoNum?'scaleY(1.3)':'scaleY(1)';
-        }
-    }else{
-        bracketCard.style.display='none';
-    }
-
-    // Tabla depuracion
+        for(var b=0;b<bars.length;b++){bars[b].style.opacity=b===r.tramoNum?'1':'0.35';bars[b].style.transform=b===r.tramoNum?'scaleY(1.3)':'scaleY(1)';}
+    }else{bracketCard.style.display='none';}
     var depT=document.getElementById('depT');
     depT.innerHTML=
         tr('Ingresos laborales (salarios + pensiones)',fCOP(r.ingLab))+
@@ -739,68 +558,38 @@ function showResult(){
         tr('Impuesto calculado por tabla',fCOP(r.impCalc))+
         tr('Retenciones que te practicaron','(-) '+fCOP(r.ret),'sub')+
         tr(r.saldo>=0?'SALDO A PAGAR':'TE DEVUELVEN',fCOP(Math.abs(r.saldo)),'tot');
-
-    // Tabla casillas (si pago o demo)
-    var casCard=document.getElementById('casCard');
-    var casT=document.getElementById('casT');
+    var casCard=document.getElementById('casCard'),casT=document.getElementById('casT');
     if(PAGADO||DEMO){
         casCard.style.display='block';
         casT.innerHTML=
-            ctr('56','Ingresos por salarios',r.ingLab)+
-            ctr('57','Ingresos por pensiones',pI('iPenR'))+
-            ctr('58','Ingresos por honorarios',r.ingHon)+
-            ctr('59','Ingresos por arrendamientos',pI('iArr'))+
-            ctr('60','Dividendos y participaciones',r.rlDiv)+
-            ctr('61','Otros ingresos',pI('iOtrI'))+
+            ctr('56','Ingresos por salarios',r.ingLab)+ctr('57','Ingresos por pensiones',pI('iPenR'))+
+            ctr('58','Ingresos por honorarios',r.ingHon)+ctr('59','Ingresos por arrendamientos',pI('iArr'))+
+            ctr('60','Dividendos y participaciones',r.rlDiv)+ctr('61','Otros ingresos',pI('iOtrI'))+
             ctr('62','Costos actividad independiente',pI('iCos'))+
             ctr('63','Deduccion salud (tope '+fCOP(r.tS)+')',r.aS)+
             ctr('64','Deduccion pension/AFC (tope '+fCOP(r.tP)+')',r.aP)+
             ctr('65','Deduccion intereses vivienda (tope '+fCOP(r.tV)+')',r.aV)+
             ctr('66','Deduccion donaciones (tope '+fCOP(r.tD)+')',r.aD)+
             ctr('67','Deduccion dependientes (tope '+fCOP(r.tDp)+')',r.aDp)+
-            ctr('68','Exencion laboral 25%',r.exLab)+
-            ctr('69','Renta gravable',r.rentaG)+
-            ctr('70','Impuesto calculado',r.impCalc)+
-            ctr('71','Retenciones practicadas',r.ret)+
+            ctr('68','Exencion laboral 25%',r.exLab)+ctr('69','Renta gravable',r.rentaG)+
+            ctr('70','Impuesto calculado',r.impCalc)+ctr('71','Retenciones practicadas',r.ret)+
             ctr('72',r.saldo>=0?'Saldo a pagar':'Saldo a favor',Math.abs(r.saldo));
     }else{
         casCard.style.display='block';
         casT.innerHTML='<tr><td colspan="2" style="text-align:center;padding:20px;color:var(--g400)"><i class="fas fa-lock" style="font-size:24px;display:block;margin-bottom:8px;color:var(--acc)"></i>Descarga el PDF para ver la guia completa con todas las casillas</td></tr>';
     }
-
     goStep(4);
 }
 
 function tr(c,v,cls){return'<tr class="'+(cls||'')+'"><td>'+c+'</td><td>'+v+'</td></tr>'}
 function ctr(cas,con,val){return'<tr><td><span class="cs">Cas. '+cas+'</span>'+con+'</td><td>'+fCOP(val)+'</td></tr>'}
 
-// ================================================================
-// 8. DATOS DE EJEMPLO (DEMO)
-// Llena valores que SI generan impuesto para probar la app
-// ================================================================
-
 function fillDemo(){
-    // Escenario: Persona con salario alto + dividendos + retenciones
-    sI('iPat',230000000);   // Patrimonio: $230M (obliga a declarar)
-    sI('iIng',95000000);    // Ingresos brutos: $95M
-    sI('iCons',35000000);
-    sI('iConsi',55000000);
-    sI('iComp',28000000);
-    sI('iSal',85000000);    // Salario: $85M
-    sI('iPenR',0);
-    sI('iRet',14000000);    // Retenciones: $14M
-    sI('iHon',0);
-    sI('iCos',0);
-    sI('iRetI',0);
-    sI('iDiv',15000000);   // Dividendos: $15M
-    sI('iArr',8000000);    // Arriendos: $8M
-    sI('iOtrI',0);
-    sI('iRetO',2000000);
-    sI('iSalud',800000);
-    sI('iPV',1000000);
-    sI('iViv',3500000);
-    sI('iDon',0);
-    sI('iDep',2000000);
+    sI('iPat',230000000);sI('iIng',95000000);sI('iCons',35000000);sI('iConsi',55000000);sI('iComp',28000000);
+    sI('iSal',85000000);sI('iPenR',0);sI('iRet',14000000);
+    sI('iHon',0);sI('iCos',0);sI('iRetI',0);
+    sI('iDiv',15000000);sI('iArr',8000000);sI('iOtrI',0);sI('iRetO',2000000);
+    sI('iSalud',800000);sI('iPV',1000000);sI('iViv',3500000);sI('iDon',0);sI('iDep',2000000);
     document.getElementById('iNom').value='Juan Perez Garcia';
     document.getElementById('iCed').value='79123456';
     document.getElementById('iEma').value='juan@correo.com';
@@ -808,53 +597,35 @@ function fillDemo(){
     toast('Datos de ejemplo cargados. Avanza para ver el calculo.','ok',4000);
 }
 
-// ================================================================
-// 9. GENERACION DE PDF (jsPDF)
-// ================================================================
-
 function genPDF(){
     var r=window._lastResult;if(!r){toast('Calcula primero','err');return}
     var nom=document.getElementById('iNom').value||'Contribuyente';
     var ced=document.getElementById('iCed').value||'N/A';
     var doc=new jspdf.jsPDF();
-
-    // Encabezado
     doc.setFillColor(10,123,66);doc.rect(0,0,210,32,'F');
     doc.setTextColor(255,255,255);doc.setFontSize(18);doc.setFont('helvetica','bold');
     doc.text('RentaFacil Colombia - Hoja de Trabajo',105,14,{align:'center'});
     doc.setFontSize(9);doc.setFont('helvetica','normal');
     doc.text('Ano gravable '+ANIO+' | UVT: $'+UVT.toLocaleString('es-CO')+' | Fecha: '+new Date().toLocaleDateString('es-CO'),105,24,{align:'center'});
-
-    // Datos
     doc.setTextColor(30,41,59);doc.setFontSize(11);doc.setFont('helvetica','bold');
     doc.text('Datos del Contribuyente',14,42);
     doc.setFontSize(9);doc.setFont('helvetica','normal');
-    doc.text('Nombre: '+sinTilde(nom),14,49);
-    doc.text('CC: '+ced,14,54);
-
-    // Depuracion
+    doc.text('Nombre: '+sinTilde(nom),14,49);doc.text('CC: '+ced,14,54);
     doc.setFontSize(11);doc.setFont('helvetica','bold');doc.text('Depuracion de la Renta (Arts. 335-337 ET)',14,66);
     doc.setDrawColor(10,123,66);doc.line(14,68,196,68);
-    doc.setFontSize(8);doc.setFont('helvetica','normal');
-    var y=73;
+    doc.setFontSize(8);doc.setFont('helvetica','normal');var y=73;
     var lines=[
         ['Ingresos laborales',fCOP(r.ingLab)],
         ['(-) Exencion laboral 25% (tope '+fCOP(r.topeExLab)+')',fCOP(r.exLab)],
         ['= Ingreso neto laboral',fCOP(r.ingNetLab)],
         ['(-) Deducciones aplicadas',fCOP(r.totDed)],
-        ['    Salud (tope '+fCOP(r.tS)+')',fCOP(r.aS)],
-        ['    Pension/AFC (tope '+fCOP(r.tP)+')',fCOP(r.aP)],
-        ['    Intereses vivienda (tope '+fCOP(r.tV)+')',fCOP(r.aV)],
-        ['    Donaciones (tope '+fCOP(r.tD)+')',fCOP(r.aD)],
+        ['    Salud (tope '+fCOP(r.tS)+')',fCOP(r.aS)],['    Pension/AFC (tope '+fCOP(r.tP)+')',fCOP(r.aP)],
+        ['    Intereses vivienda (tope '+fCOP(r.tV)+')',fCOP(r.aV)],['    Donaciones (tope '+fCOP(r.tD)+')',fCOP(r.aD)],
         ['    Dependientes (tope '+fCOP(r.tDp)+')',fCOP(r.aDp)],
-        ['= Renta liquida del trabajo',fCOP(r.rlTrab)],
-        ['Renta de honorarios (neto)',fCOP(r.rlHon)],
-        ['Renta no laboral',fCOP(r.rlNoLab)],
-        ['Dividendos gravados',fCOP(r.rlDiv)],
-        ['= RENTA GRAVABLE TOTAL',fCOP(r.rentaG)],
-        ['   Equivalente en UVT',r.rUVT.toFixed(1)+' UVT'],
-        ['   Tarifa marginal',r.tarifa+'%'],
-        ['Impuesto calculado',fCOP(r.impCalc)],
+        ['= Renta liquida del trabajo',fCOP(r.rlTrab)],['Renta de honorarios (neto)',fCOP(r.rlHon)],
+        ['Renta no laboral',fCOP(r.rlNoLab)],['Dividendos gravados',fCOP(r.rlDiv)],
+        ['= RENTA GRAVABLE TOTAL',fCOP(r.rentaG)],['   Equivalente en UVT',r.rUVT.toFixed(1)+' UVT'],
+        ['   Tarifa marginal',r.tarifa+'%'],['Impuesto calculado',fCOP(r.impCalc)],
         ['(-) Retenciones practicadas',fCOP(r.ret)],
         [r.saldo>=0?'= SALDO A PAGAR':'= TE DEVUELVEN',fCOP(Math.abs(r.saldo))]
     ];
@@ -863,57 +634,36 @@ function genPDF(){
         var isBold=l[0].charAt(0)==='='||l[0].indexOf('TOTAL')>=0||l[0].indexOf('SALDO')>=0||l[0].indexOf('DEVUELVEN')>=0;
         doc.setFont('helvetica',isBold?'bold':'normal');
         if(isBold){doc.setDrawColor(200,200,200);doc.line(14,y-1,196,y-1)}
-        doc.text(sinTilde(l[0]),14,y);
-        doc.text(l[1],196,y,{align:'right'});
-        y+=6;
+        doc.text(sinTilde(l[0]),14,y);doc.text(l[1],196,y,{align:'right'});y+=6;
     });
-
-    // Guia casillas
     y+=10;if(y>250){doc.addPage();y=20}
     doc.setFontSize(11);doc.setFont('helvetica','bold');doc.text('Guia Formulario 210 - Casillas',14,y);y+=8;
-    doc.setDrawColor(10,123,66);doc.line(14,y,196,y);y+=4;
-    doc.setFontSize(8);
+    doc.setDrawColor(10,123,66);doc.line(14,y,196,y);y+=4;doc.setFontSize(8);
     var cas=[
-        ['56','Ingresos por salarios',r.ingLab],
-        ['57','Ingresos por pensiones',pI('iPenR')],
-        ['58','Ingresos por honorarios',r.ingHon],
-        ['59','Ingresos por arrendamientos',pI('iArr')],
-        ['60','Dividendos y participaciones',r.rlDiv],
-        ['61','Otros ingresos',pI('iOtrI')],
+        ['56','Ingresos por salarios',r.ingLab],['57','Ingresos por pensiones',pI('iPenR')],
+        ['58','Ingresos por honorarios',r.ingHon],['59','Ingresos por arrendamientos',pI('iArr')],
+        ['60','Dividendos y participaciones',r.rlDiv],['61','Otros ingresos',pI('iOtrI')],
         ['62','Costos actividad independiente',pI('iCos')],
-        ['63','Ded. salud',r.aS],
-        ['64','Ded. pension/AFC',r.aP],
-        ['65','Ded. intereses vivienda',r.aV],
-        ['66','Ded. donaciones',r.aD],
-        ['67','Ded. dependientes',r.aDp],
-        ['68','Exencion laboral 25%',r.exLab],
-        ['69','Renta gravable',r.rentaG],
-        ['70','Impuesto calculado',r.impCalc],
-        ['71','Retenciones practicadas',r.ret],
+        ['63','Ded. salud',r.aS],['64','Ded. pension/AFC',r.aP],['65','Ded. intereses vivienda',r.aV],
+        ['66','Ded. donaciones',r.aD],['67','Ded. dependientes',r.aDp],
+        ['68','Exencion laboral 25%',r.exLab],['69','Renta gravable',r.rentaG],
+        ['70','Impuesto calculado',r.impCalc],['71','Retenciones practicadas',r.ret],
         ['72',r.saldo>=0?'Saldo a pagar':'Saldo a favor',Math.abs(r.saldo)]
     ];
     cas.forEach(function(c){
         if(y>275){doc.addPage();y=20}
         doc.setFont('helvetica','bold');doc.text('Cas. '+c[0],14,y);
         doc.setFont('helvetica','normal');doc.text(sinTilde(c[1]),38,y);
-        doc.text(fCOP(c[2]),196,y,{align:'right'});
-        y+=6;
+        doc.text(fCOP(c[2]),196,y,{align:'right'});y+=6;
     });
-
-    // Disclaimer
     y+=8;if(y>265){doc.addPage();y=20}
     doc.setFontSize(7);doc.setTextColor(150);
     doc.text(sinTilde('AVISO: Esta hoja de trabajo es una guia informativa y no constituye una declaracion oficial de renta.'),14,y,{maxWidth:180});
     doc.text(sinTilde('Los calculos se basan en la normativa tributaria vigente y el UVT asumido ($'+UVT.toLocaleString('es-CO')+'). Verifica con un contador publico.'),14,y+4,{maxWidth:180});
     doc.text(sinTilde('Generado por RentaFacil Colombia | '+new Date().toLocaleString('es-CO')),14,y+8,{maxWidth:180});
-
     doc.save('RentaFacil_HojaDeTrabajo_'+ced+'.pdf');
     toast('PDF descargado correctamente','ok');
 }
-
-// ================================================================
-// 10. CONFETTI
-// ================================================================
 
 function confetti(){
     var cv=document.getElementById('cc'),ctx=cv.getContext('2d');
@@ -931,18 +681,20 @@ function confetti(){
     draw();
 }
 
-// ================================================================
-// 11. EVENTOS
-// ================================================================
-
 document.addEventListener('DOMContentLoaded',function(){
 
-    // Formato monetario en tiempo real
+    // Detector de pago Wompi: si vuelve de Wompi, la URL tiene ?pago=ok
+    var urlParams=new URLSearchParams(window.location.search);
+    if(urlParams.get('pago')==='ok'){
+        PAGADO=true;
+        window.history.replaceState({},document.title,window.location.pathname);
+        toast('Pago exitoso! Tu PDF esta desbloqueado.','ok',5000);
+    }
+
     document.querySelectorAll('input[inputmode="numeric"]').forEach(function(inp){
         inp.addEventListener('input',function(){fIV(inp)});
     });
 
-    // Mostrar topes
     var setTopes=function(){
         document.getElementById('tPat').textContent=fCOP(OBL_UVT.patrimonio*UVT);
         document.getElementById('tIng').textContent=fCOP(OBL_UVT.ingresos*UVT);
@@ -951,110 +703,53 @@ document.addEventListener('DOMContentLoaded',function(){
         document.getElementById('tComp').textContent=fCOP(OBL_UVT.compras*UVT);
     };setTopes();
 
-    // Verificar obligacion en tiempo real
     ['iPat','iIng','iCons','iConsi','iComp'].forEach(function(id){
         document.getElementById(id).addEventListener('input',function(){checkObl();updateRunning()});
     });
-
-    // Actualizar al escribir ingresos/deducciones
     ['iSal','iPenR','iRet','iHon','iCos','iRetI','iDiv','iArr','iOtrI','iRetO',
      'iSalud','iPV','iViv','iDon','iDep'].forEach(function(id){
         document.getElementById(id).addEventListener('input',function(){updateCaps()});
     });
 
-    // Tabs de ingresos
     document.querySelectorAll('.itab').forEach(function(tab){
         tab.addEventListener('click',function(){
             document.querySelectorAll('.itab').forEach(function(t){t.classList.remove('act')});
             document.querySelectorAll('.ipnl').forEach(function(p){p.classList.remove('act')});
-            tab.classList.add('act');
-            document.getElementById('p-'+tab.dataset.tab).classList.add('act');
+            tab.classList.add('act');document.getElementById('p-'+tab.dataset.tab).classList.add('act');
         });
     });
 
-    // Navegacion
     document.getElementById('btnNext').addEventListener('click',function(){
         if(step===TOTAL-1){showResult()}else{goStep(step+1)}
     });
     document.getElementById('btnPrev').addEventListener('click',function(){goStep(step-1)});
-
-    // Demo
     document.getElementById('btnDemo').addEventListener('click',fillDemo);
 
-    // Configuracion
     document.getElementById('btnCfg').addEventListener('click',function(){document.getElementById('mCfg').classList.add('act')});
     document.getElementById('btnClsCfg').addEventListener('click',function(){document.getElementById('mCfg').classList.remove('act')});
     document.getElementById('btnSaveCfg').addEventListener('click',function(){
         var nu=parseInt(document.getElementById('iUVT2').value.replace(/\D/g,''),10);
-        if(nu>0){
-            UVT=nu;ANIO=document.getElementById('iAnio2').value||'2025';DEMO=document.getElementById('iDemo').checked;
-            setTopes();updateCaps();checkObl();
-            document.getElementById('mCfg').classList.remove('act');
+        if(nu>0){UVT=nu;ANIO=document.getElementById('iAnio2').value||'2025';DEMO=document.getElementById('iDemo').checked;
+            setTopes();updateCaps();checkObl();document.getElementById('mCfg').classList.remove('act');
             toast('Configuracion guardada. UVT=$'+UVT.toLocaleString('es-CO'),'ok');
         }else{toast('Ingresa un UVT valido','err')}
     });
 
-    // Metodos de pago
-    document.querySelectorAll('.pm2').forEach(function(m){
-        m.addEventListener('click',function(){
-            document.querySelectorAll('.pm2').forEach(function(x){x.classList.remove('sel')});
-            m.classList.add('sel');
-        });
-    });
-
-    // ============================================================
-    // BOTON PDF: Si ya pago o es demo, genera directo. Sino, modal.
-    // ============================================================
+    // Boton PDF: si ya pago o es demo, genera directo. Sino, abre modal Wompi.
     document.getElementById('btnPDF').addEventListener('click',function(){
-        if(DEMO||PAGADO){
-            genPDF();
-        }else{
-            document.getElementById('mPay').classList.add('act');
-        }
+        if(DEMO||PAGADO){genPDF();}
+        else{document.getElementById('mPay').classList.add('act');}
     });
 
-    // ============================================================
-    // BOTON DE PAGO - PLACEHOLDER PARA PASARELA REAL
-    // ============================================================
-    // CUANDO INTEGRES TU PASARELA (Wompi, Nequi, etc.):
-    // 1. Reemplaza la simulacion de abajo
-    // 2. Al confirmar el pago, cambia PAGADO=true
-    // 3. Luego llama genPDF()
-    //
-    // EJEMPLO CON WOMPI:
-    // var checkout = new WidgetCheckout({
-    //   currency: 'COP',
-    //   amountInCents: 490000,
-    //   reference: 'RENTA-'+Date.now(),
-    //   publicKey: 'pub_test_TU_LLAVE_PUBLICA',
-    //   redirectUrl: window.location.href
-    // });
-    // checkout.open(function(result){
-    //   if(result.transaction.status === 'APPROVED'){
-    //     PAGADO = true;
-    //     document.getElementById('mPay').classList.remove('act');
-    //     genPDF();
-    //   }
-    // });
-    // ============================================================
-    document.getElementById('btnConfPay').addEventListener('click',function(){
-        toast('Procesando pago...','info');
-        // >>> SIMULACION - ELIMINAR EN PRODUCCION <<<
-        setTimeout(function(){
-            PAGADO=true;
-            document.getElementById('mPay').classList.remove('act');
-            toast('Pago exitoso. Descargando PDF...','ok');
-            setTimeout(genPDF,500);
-        },1500);
+    // Boton Wompi: abre la pasarela de pago en nueva pestana
+    document.getElementById('btnWompiPay').addEventListener('click',function(){
+        window.open(WOMPI_URL,'_blank');
     });
 
+    // Cerrar modal pago
     document.getElementById('btnClsPay').addEventListener('click',function(){document.getElementById('mPay').classList.remove('act')});
 
-    // ============================================================
-    // WHATSAPP: SOLO ENVIA RESUMEN BREVE (4 lineas)
-    // NO incluye las casillas ni la guia detallada.
-    // Eso solo esta en el PDF de pago.
-    // ============================================================
+    // WhatsApp: solo resumen breve
     document.getElementById('btnWA').addEventListener('click',function(){
         var r=window._lastResult;if(!r){toast('Calcula primero','err');return}
         var tel=document.getElementById('iTelC').value.replace(/\D/g,'');
@@ -1076,16 +771,15 @@ document.addEventListener('DOMContentLoaded',function(){
         document.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"]').forEach(function(i){i.value=''});
         document.querySelectorAll('input[inputmode="numeric"]').forEach(function(i){i.value=''});
         document.getElementById('oblR').className='obl-r';document.getElementById('oblR').innerHTML='';
-        PAGADO=false;window._lastResult=null;
-        goStep(0);toast('Calculo reiniciado','ok');
+        PAGADO=false;window._lastResult=null;goStep(0);toast('Calculo reiniciado','ok');
     });
 
-    // Cerrar modales
+    // Cerrar modales con click fuera
     document.querySelectorAll('.mo').forEach(function(m){
         m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('act')});
     });
 
-}); // fin DOMContentLoaded
+});
 
 })();
 </script>
