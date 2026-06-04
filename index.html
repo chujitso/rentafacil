@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AV4ZCpUFA95_FJr1JxiHC_CUrEyVkL-hyvDZlRgP-hm4LLziIT6-nJN1NFrZ31O5Y9CBryJ20v1PpmwE&components=buttons&currency=USD&intent=capture"></script>
 <style>
 :root{--pri:#0A7B42;--pri-d:#065A30;--pri-l:#E6F4ED;--pri-50:#F0FAF4;--acc:#D4A017;--acc-l:#FFF8E1;--ok:#059669;--ok-l:#D1FAE5;--err:#DC2626;--err-l:#FEE2E2;--warn:#F59E0B;--warn-l:#FEF3C7;--g50:#F8FAF9;--g100:#F1F3F2;--g200:#E2E6E4;--g300:#CDD3D0;--g400:#9CA3AF;--g500:#6B7280;--g600:#4B5563;--g700:#374151;--g800:#1F2937;--g900:#111827;--w:#FFF;--r:12px;--font:'Outfit',sans-serif;--hh:60px;--bh:72px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -54,8 +55,6 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .btn-s:hover{background:var(--g200)}
 .btn-wa{background:#25D366;color:#fff;box-shadow:0 2px 8px rgba(37,211,102,.3)}
 .btn-wa:hover{transform:translateY(-1px)}
-.btn-pay{background:linear-gradient(135deg,var(--acc),#B8860B);color:#fff;box-shadow:0 2px 8px rgba(212,160,23,.3)}
-.btn-pay:hover{transform:translateY(-1px)}
 .btn-out{background:transparent;color:var(--pri);border:2px solid var(--pri)}
 .btn-out:hover{background:var(--pri-l)}
 .btn-blk{width:100%}
@@ -93,15 +92,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 .dt td:last-child{text-align:right;font-weight:600;color:var(--g800);white-space:nowrap}
 .dt tr.tot td{font-weight:800;font-size:15px;border-top:2px solid var(--pri);padding-top:10px;color:var(--pri-d)}
 .dt tr.sub td:last-child{color:var(--err)}
-.dt tr.add td:last-child{color:var(--ok)}
 .cs{display:inline-block;background:var(--g100);color:var(--g500);font-size:9px;font-weight:700;padding:2px 5px;border-radius:3px;margin-right:3px}
 .mo{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .mo.act{display:flex}
 .mc2{background:var(--w);border-radius:20px 20px 0 0;width:100%;max-width:500px;max-height:88vh;overflow-y:auto;padding:24px 20px;animation:slUp .3s ease}
 @keyframes slUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .mh2{width:36px;height:4px;background:var(--g300);border-radius:2px;margin:0 auto 16px}
-.mt2{font-size:20px;font-weight:800;color:var(--g900);margin-bottom:6px}
-.md2{font-size:13px;color:var(--g500);margin-bottom:20px;line-height:1.6}
 .tg{display:flex;align-items:center;gap:10px;padding:10px 0}
 .tg2{position:relative;width:40px;height:22px}
 .tg2 input{opacity:0;width:0;height:0}
@@ -141,7 +137,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <body>
 
 <header class="hdr">
-<div class="logo"><div class="logo-i">R</div>Renta<b>Fácil</b></div>
+<div class="logo"><div class="logo-i">R</div>Renta<b>Facil</b></div>
 <div class="si" id="si">
 <div class="sd act" data-s="0">1</div><div class="sl"></div>
 <div class="sd" data-s="1">2</div><div class="sl"></div>
@@ -254,14 +250,14 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div class="bracket-legend"><span><i style="background:#94a3b8"></i>0-1.090 UVT</span><span><i style="background:#0A7B42"></i>1.090-1.700</span><span><i style="background:#D97706"></i>1.700-3.100</span><span><i style="background:#EA580C"></i>3.100-4.500</span><span><i style="background:#DC2626"></i>>4.500</span></div>
 </div>
 <div class="cd"><div class="cd-t">Depuracion de tu renta paso a paso</div><div class="cd-s">Arts. 335, 336 y 337 del Estatuto Tributario</div><table class="dt" id="depT"></table></div>
-<div class="cd" id="casCard" style="display:none"><div class="cd-t"><i class="fas fa-lock lock-icon"></i> Guia para tu Formulario 210</div><div class="cd-s">Copia estos valores en las casillas de la DIAN — Disponible con la descarga del PDF</div><table class="dt" id="casT"></table></div>
+<div class="cd" id="casCard" style="display:none"><div class="cd-t"><i class="fas fa-lock lock-icon"></i> Guia para tu Formulario 210</div><div class="cd-s">Copia estos valores en las casillas de la DIAN</div><table class="dt" id="casT"></table></div>
 <div style="display:flex;flex-direction:column;gap:8px;margin-top:20px">
 <button class="btn btn-p btn-blk" style="padding:16px;font-size:16px" id="btnPDF"><i class="fas fa-file-pdf"></i> Descargar Hoja de Trabajo PDF</button>
 <button class="btn btn-wa btn-blk" style="padding:16px" id="btnWA"><i class="fab fa-whatsapp"></i> Enviar resumen a mi contador (gratis)</button>
 <button class="btn btn-s btn-blk" id="btnRst"><i class="fas fa-redo"></i> Nuevo calculo</button>
 </div>
 <div class="info-box wrn" style="font-size:11px;margin-top:12px">
-<i class="fas fa-exclamation-triangle" style="color:var(--warn)"></i> <b>Que envia WhatsApp vs el PDF:</b> WhatsApp envia solo un resumen de 4 lineas (renta gravable, impuesto, retenciones, saldo) para que tu contador sepa si vale la pena atenderte. El PDF tiene la guia completa casilla por casilla del Formulario 210 que te ahorra horas llenando la DIAN.
+<i class="fas fa-exclamation-triangle" style="color:var(--warn)"></i> <b>Que envia WhatsApp vs el PDF:</b> WhatsApp envia solo un resumen de 4 lineas para que tu contador sepa si vale la pena atenderte. El PDF tiene la guia completa casilla por casilla del Formulario 210 que te ahorra horas llenando la DIAN.
 </div>
 <div class="cd cd-wrn" style="font-size:11px;color:var(--g600);line-height:1.6"><b style="color:var(--warn)">Aviso:</b> Esta hoja de trabajo es una guia informativa y no constituye una declaracion oficial. Los calculos se basan en la normativa vigente y el UVT asumido ($47.000 para 2026). Verifica con un contador publico antes de presentar ante la DIAN.</div>
 </section>
@@ -277,7 +273,8 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <!-- MODAL CONFIG -->
 <div class="mo" id="mCfg">
 <div class="mc2"><div class="mh2"></div>
-<div class="mt2">Configuracion</div><div class="md2">Ajusta los parametros del calculo tributario</div>
+<div style="font-size:20px;font-weight:800;color:#111827;margin-bottom:6px">Configuracion</div>
+<div style="font-size:13px;color:#6B7280;margin-bottom:20px;line-height:1.6">Ajusta los parametros del calculo tributario</div>
 <div class="fg"><label class="fl">Valor UVT 2026 (COP)</label><div class="ip"><input class="fi" id="iUVT2" value="47.000" inputmode="numeric"></div><div class="fh">Si la DIAN publica otro valor, actualizalo aqui</div></div>
 <div class="fg"><label class="fl">Ano gravable</label><input class="fi" id="iAnio2" value="2025" style="padding-left:12px"></div>
 <div class="tg"><label class="tg2"><input type="checkbox" id="iDemo" checked><span class="tg3"></span></label><span class="tg4">Modo demo (PDF gratis para prueba)</span></div>
@@ -286,16 +283,16 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 </div>
 
-<!-- MODAL PAGO WOMPI PREMIUM -->
+<!-- MODAL PAGO PAYPAL -->
 <div class="mo" id="mPay">
 <div class="mc2" style="background:#FAFAFA;border-radius:24px 24px 0 0">
   <div class="mh2"></div>
   <div style="text-align:center;margin-bottom:24px">
-    <div style="width:72px;height:72px;background:linear-gradient(135deg,#7C3AED,#4C1D95);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 20px rgba(107,33,168,.25)">
+    <div style="width:72px;height:72px;background:linear-gradient(135deg,#0A7B42,#065A30);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 20px rgba(10,123,66,.25)">
       <i class="fas fa-file-invoice-dollar" style="color:#fff;font-size:28px"></i>
     </div>
     <h2 style="font-size:22px;font-weight:800;color:#111827;margin:0 0 6px">Desbloquea tu Hoja de Trabajo</h2>
-    <p style="font-size:14px;color:#6B7280;margin:0;line-height:1.5">El calculo fue gratis. Descarga la guia completa con todas las casillas para copiar y pegar en la DIAN.</p>
+    <p style="font-size:14px;color:#6B7280;margin:0;line-height:1.5">El calculo fue gratis. Descarga la guia completa con todas las casillas para copiar en la DIAN.</p>
   </div>
   <div style="background:#FFFFFF;border:1px solid #E5E7EB;border-radius:16px;padding:20px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04)">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
@@ -305,7 +302,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       </div>
       <div style="text-align:right">
         <div style="font-size:12px;color:#9CA3AF;text-decoration:line-through">$25.000</div>
-        <div style="font-size:18px;font-weight:900;color:#7C3AED">$4.900</div>
+        <div style="font-size:20px;font-weight:900;color:#0A7B42">$2 USD</div>
       </div>
     </div>
     <div style="border-top:1px dashed #E5E7EB;margin:14px 0"></div>
@@ -315,20 +312,19 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div style="display:flex;align-items:center;gap:8px"><i class="fas fa-check-circle" style="color:#10B981"></i> Depuracion paso a paso explicada</div>
     </div>
   </div>
-  <div style="text-align:center;margin-bottom:16px">
-    <div style="font-size:11px;color:#9CA3AF;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;font-weight:600">Metodos de pago aceptados</div>
-    <div style="display:flex;justify-content:center;gap:14px;align-items:center">
-      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-wallet" style="font-size:18px;color:#8B5CF6"></i><span style="font-size:9px;color:#6B7280">Nequi</span></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-mobile-alt" style="font-size:18px;color:#EF4444"></i><span style="font-size:9px;color:#6B7280">Daviplata</span></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-credit-card" style="font-size:18px;color:#2563EB"></i><span style="font-size:9px;color:#6B7280">Tarjetas</span></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:3px"><i class="fas fa-university" style="font-size:18px;color:#059669"></i><span style="font-size:9px;color:#6B7280">PSE</span></div>
-    </div>
+  <!-- Contenedor donde PayPal renderiza su boton dorado -->
+  <div id="paypal-button-container" style="margin-bottom:14px"></div>
+  <!-- Enlace de respaldo si PayPal no carga -->
+  <div id="paypal-fallback" style="display:none;margin-bottom:14px">
+    <a href="https://paypal.me/chujitso/2" target="_blank" class="btn btn-blk" style="padding:18px 24px;border-radius:14px;background:linear-gradient(135deg,#003087,#001F5B);color:#fff;font-size:17px;font-weight:800;box-shadow:0 6px 20px rgba(0,48,135,.35);text-decoration:none">
+      <i class="fab fa-paypal" style="font-size:18px"></i> Pagar $2 USD con PayPal
+    </a>
   </div>
-  <button class="btn btn-blk" id="btnWompiPay" style="padding:20px 24px;border-radius:14px;background:linear-gradient(135deg,#7C3AED,#6D28D9);color:#fff;font-size:18px;font-weight:800;box-shadow:0 6px 20px rgba(109,40,217,.35);letter-spacing:.3px">
-    <i class="fas fa-lock" style="font-size:16px"></i> Pagar $4.900 COP
+  <button class="btn btn-blk" id="btnYaPague" style="margin-top:6px;padding:14px;border-radius:12px;background:#DCFCE7;color:#065F46;font-size:14px;font-weight:700;border:2px solid #86EFAC">
+    <i class="fas fa-check-circle"></i> Ya realice mi pago
   </button>
-  <button class="btn btn-blk" id="btnClsPay" style="margin-top:10px;border:none;background:transparent;color:#9CA3AF;font-weight:500;font-size:13px">Volver sin descargar</button>
-  <div style="text-align:center;margin-top:12px;font-size:10px;color:#D1D5DB"><i class="fas fa-shield-alt"></i> Transaccion 100% segura procesada por Wompi</div>
+  <button class="btn btn-blk" id="btnClsPay" style="margin-top:8px;border:none;background:transparent;color:#9CA3AF;font-weight:500;font-size:13px">Volver sin descargar</button>
+  <div style="text-align:center;margin-top:10px;font-size:10px;color:#D1D5DB"><i class="fas fa-shield-alt"></i> Pago 100% seguro via PayPal</div>
 </div>
 </div>
 
@@ -339,28 +335,26 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 (function(){
 'use strict';
 
-var UVT = 47000;
-var ANIO = 2025;
-var DEMO = true;
-var PAGADO = false;
+var PAYPAL_LINK='https://paypal.me/chujitso/2';
+var UVT=47000;
+var ANIO=2025;
+var DEMO=true;
+var PAGADO=false;
 
-// URL de pago Wompi - REEMPLAZA con tu enlace real
-var WOMPI_URL = 'https://wompi.co';
+var TOPES={salud:25,pension:25,donaciones:30,vivienda:100,dependientes:32};
+var EX_PCT=0.25;
+var EX_TOPE=1340;
+var OBL_UVT={patrimonio:4900,ingresos:1390,consumos:1400,consignaciones:1400,compras:1400};
 
-var TOPES = { salud:25, pension:25, donaciones:30, vivienda:100, dependientes:32 };
-var EX_PCT = 0.25;
-var EX_TOPE = 1340;
-var OBL_UVT = { patrimonio:4900, ingresos:1390, consumos:1400, consignaciones:1400, compras:1400 };
-
-var TABLA = [
-    { desde:0,    hasta:1090,     tarifa:0,  ded:0     },
-    { desde:1090, hasta:1700,     tarifa:19, ded:207.1 },
-    { desde:1700, hasta:3100,     tarifa:28, ded:360.1 },
-    { desde:3100, hasta:4500,     tarifa:33, ded:515.1 },
-    { desde:4500, hasta:Infinity, tarifa:39, ded:785.1 }
+var TABLA=[
+    {desde:0,hasta:1090,tarifa:0,ded:0},
+    {desde:1090,hasta:1700,tarifa:19,ded:207.1},
+    {desde:1700,hasta:3100,tarifa:28,ded:360.1},
+    {desde:3100,hasta:4500,tarifa:33,ded:515.1},
+    {desde:4500,hasta:Infinity,tarifa:39,ded:785.1}
 ];
 
-function fCOP(v){if(v===0||v==null)return '$0';var r=Math.round(Math.abs(v));return(v<0?'-':'')+'$'+r.toLocaleString('es-CO')}
+function fCOP(v){if(v===0||v==null)return'$0';var r=Math.round(Math.abs(v));return(v<0?'-':'')+'$'+r.toLocaleString('es-CO')}
 function pI(id){var e=document.getElementById(id);if(!e)return 0;var n=parseInt(e.value.replace(/\D/g,''),10);return isNaN(n)?0:n}
 function fIV(inp){if(!inp)return;var r=inp.value.replace(/\D/g,'');if(!r){inp.value='';return}inp.value=parseInt(r,10).toLocaleString('es-CO')}
 function toast(m,t,d){t=t||'info';d=d||3500;var c=document.getElementById('tC'),e=document.createElement('div');e.className='tst '+t;e.textContent=m;c.appendChild(e);setTimeout(function(){e.classList.add('out');setTimeout(function(){e.remove()},300)},d)}
@@ -393,80 +387,37 @@ function calcular(){
     var div=pI('iDiv'),arr=pI('iArr'),otrI=pI('iOtrI');
     var ret=pI('iRet')+pI('iRetI')+pI('iRetO');
     var dS=pI('iSalud'),dP=pI('iPV'),dV=pI('iViv'),dD=pI('iDon'),dDp=pI('iDep');
-
-    var ingLab=sal+penR;
-    var ingHon=hon;
-    var ingNoLab=arr+otrI;
-    var ingBrutos=ingLab+ingHon+div+ingNoLab;
-
-    var exLabSinTope=ingLab*EX_PCT;
-    var topeExLab=EX_TOPE*UVT;
-    var exLab=Math.min(exLabSinTope,topeExLab);
+    var ingLab=sal+penR,ingHon=hon,ingNoLab=arr+otrI,ingBrutos=ingLab+ingHon+div+ingNoLab;
+    var exLabSinTope=ingLab*EX_PCT,topeExLab=EX_TOPE*UVT,exLab=Math.min(exLabSinTope,topeExLab);
     var ingNetLab=Math.max(0,ingLab-exLab);
-
-    var tS=TOPES.salud*UVT,tP=TOPES.pension*UVT,tV=TOPES.vivienda*UVT;
-    var tD=TOPES.donaciones*UVT,tDp=TOPES.dependientes*2*UVT;
-    var aS=Math.min(dS,tS),aP=Math.min(dP,tP),aV=Math.min(dV,tV);
-    var aD=Math.min(dD,tD),aDp=Math.min(dDp,tDp);
+    var tS=TOPES.salud*UVT,tP=TOPES.pension*UVT,tV=TOPES.vivienda*UVT,tD=TOPES.donaciones*UVT,tDp=TOPES.dependientes*2*UVT;
+    var aS=Math.min(dS,tS),aP=Math.min(dP,tP),aV=Math.min(dV,tV),aD=Math.min(dD,tD),aDp=Math.min(dDp,tDp);
     var totDed=aS+aP+aV+aD+aDp;
-
-    var rlTrab=Math.max(0,ingNetLab-totDed);
-    var rlHon=Math.max(0,ingHon-cos);
-    var rlNoLab=ingNoLab;
-    var rlDiv=div;
+    var rlTrab=Math.max(0,ingNetLab-totDed),rlHon=Math.max(0,ingHon-cos),rlNoLab=ingNoLab,rlDiv=div;
     var rentaG=rlTrab+rlHon+rlNoLab+rlDiv;
-
-    var rUVT=rentaG/Math.max(1,UVT);
-    var impUVT=0,tarifa=0,tramoNum=0;
-    for(var i=0;i<TABLA.length;i++){
-        if(rUVT>TABLA[i].desde){
-            impUVT=(rUVT*TABLA[i].tarifa/100)-TABLA[i].ded;
-            tarifa=TABLA[i].tarifa;tramoNum=i;
-        }
-    }
-    impUVT=Math.max(0,impUVT);
-    var impCalc=Math.round(impUVT*Math.max(1,UVT));
-    var saldo=impCalc-ret;
-
-    return{
-        ingLab:ingLab,ingHon:ingHon,ingNoLab:ingNoLab,div:div,ingBrutos:ingBrutos,
-        exLabSinTope:exLabSinTope,exLab:exLab,topeExLab:topeExLab,ingNetLab:ingNetLab,
-        dS:dS,aS:aS,tS:tS,dP:dP,aP:aP,tP:tP,dV:dV,aV:aV,tV:tV,
-        dD:dD,aD:aD,tD:tD,dDp:dDp,aDp:aDp,tDp:tDp,totDed:totDed,
-        rlTrab:rlTrab,rlHon:rlHon,rlNoLab:rlNoLab,rlDiv:rlDiv,
-        rentaG:rentaG,rUVT:rUVT,tarifa:tarifa,tramoNum:tramoNum,
-        impCalc:impCalc,ret:ret,saldo:saldo
-    };
+    var rUVT=rentaG/Math.max(1,UVT),impUVT=0,tarifa=0,tramoNum=0;
+    for(var i=0;i<TABLA.length;i++){if(rUVT>TABLA[i].desde){impUVT=(rUVT*TABLA[i].tarifa/100)-TABLA[i].ded;tarifa=TABLA[i].tarifa;tramoNum=i}}
+    impUVT=Math.max(0,impUVT);var impCalc=Math.round(impUVT*Math.max(1,UVT)),saldo=impCalc-ret;
+    return{ingLab:ingLab,ingHon:ingHon,ingNoLab:ingNoLab,div:div,ingBrutos:ingBrutos,exLabSinTope:exLabSinTope,exLab:exLab,topeExLab:topeExLab,ingNetLab:ingNetLab,dS:dS,aS:aS,tS:tS,dP:dP,aP:aP,tP:tP,dV:dV,aV:aV,tV:tV,dD:dD,aD:aD,tD:tD,dDp:dDp,aDp:aDp,tDp:tDp,totDed:totDed,rlTrab:rlTrab,rlHon:rlHon,rlNoLab:rlNoLab,rlDiv:rlDiv,rentaG:rentaG,rUVT:rUVT,tarifa:tarifa,tramoNum:tramoNum,impCalc:impCalc,ret:ret,saldo:saldo};
 }
 
 function updateRunning(){
-    var r=calcular();
-    var el=document.getElementById('rtAm');
-    if(r.rUVT>0){
-        el.textContent=r.rUVT.toFixed(1)+' UVT';
-        el.className='am'+(r.saldo<0?' ref':r.saldo>0?' pay':' zero');
-    }else{el.textContent='0 UVT';el.className='am zero'}
+    var r=calcular();var el=document.getElementById('rtAm');
+    if(r.rUVT>0){el.textContent=r.rUVT.toFixed(1)+' UVT';el.className='am'+(r.saldo<0?' ref':r.saldo>0?' pay':' zero');}
+    else{el.textContent='0 UVT';el.className='am zero'}
 }
 
 function updateCaps(){
     var dS=pI('iSalud'),dP=pI('iPV'),dV=pI('iViv'),dD=pI('iDon'),dDp=pI('iDep');
-    var tS=TOPES.salud*UVT,tP=TOPES.pension*UVT,tV=TOPES.vivienda*UVT;
-    var tD=TOPES.donaciones*UVT,tDp=TOPES.dependientes*2*UVT;
-    setCap('cS',dS,tS,'cSv','cSm');setCap('cP',dP,tP,'cPv','cPm');
-    setCap('cV',dV,tV,'cVv','cVm');setCap('cD',dD,tD,'cDv','cDm');
-    setCap('cDp',dDp,tDp,'cDpv','cDpm');
-    var ingLab=pI('iSal')+pI('iPenR');
-    var ex=Math.min(ingLab*EX_PCT,EX_TOPE*UVT);
-    document.getElementById('exD').textContent=fCOP(ex);
-    document.getElementById('exT').textContent=fCOP(EX_TOPE*UVT);
-    updateRunning();
+    var tS=TOPES.salud*UVT,tP=TOPES.pension*UVT,tV=TOPES.vivienda*UVT,tD=TOPES.donaciones*UVT,tDp=TOPES.dependientes*2*UVT;
+    setCap('cS',dS,tS,'cSv','cSm');setCap('cP',dP,tP,'cPv','cPm');setCap('cV',dV,tV,'cVv','cVm');setCap('cD',dD,tD,'cDv','cDm');setCap('cDp',dDp,tDp,'cDpv','cDpm');
+    var ingLab=pI('iSal')+pI('iPenR'),ex=Math.min(ingLab*EX_PCT,EX_TOPE*UVT);
+    document.getElementById('exD').textContent=fCOP(ex);document.getElementById('exT').textContent=fCOP(EX_TOPE*UVT);updateRunning();
 }
 
 function setCap(barId,val,max,valId,maxId){
-    var pct=max>0?Math.min((val/max)*100,100):0;
-    var bar=document.getElementById(barId);
-    bar.style.width=pct+'%';
-    bar.className='cbf'+(val>max?' exc':pct>80?' wrn':'');
+    var pct=max>0?Math.min((val/max)*100,100):0;var bar=document.getElementById(barId);
+    bar.style.width=pct+'%';bar.className='cbf'+(val>max?' exc':pct>80?' wrn':'');
     document.getElementById(valId).textContent=fCOP(Math.min(val,max))+(val>max?' (excedido por '+fCOP(val-max)+')':'');
     document.getElementById(maxId).textContent='Tope: '+fCOP(max);
 }
@@ -474,110 +425,40 @@ function setCap(barId,val,max,valId,maxId){
 var step=0;var TOTAL=5;
 
 function goStep(s){
-    if(s>0&&step===0){
-        if(pI('iPat')===0&&pI('iIng')===0&&pI('iCons')===0&&pI('iConsi')===0&&pI('iComp')===0){
-            toast('Ingresa al menos tu patrimonio o ingresos para continuar','err');return;
-        }
-        checkObl();
-    }
+    if(s>0&&step===0){if(pI('iPat')===0&&pI('iIng')===0&&pI('iCons')===0&&pI('iConsi')===0&&pI('iComp')===0){toast('Ingresa al menos tu patrimonio o ingresos para continuar','err');return;}checkObl();}
     step=Math.max(0,Math.min(TOTAL-1,s));
-    document.querySelectorAll('.ss').forEach(function(e){e.classList.remove('act')});
-    document.getElementById('s'+step).classList.add('act');
-    document.querySelectorAll('.sd').forEach(function(d,i){
-        d.className='sd'+(i===step?' act':i<step?' done':'');
-        if(i<step)d.innerHTML='<i class="fas fa-check" style="font-size:10px"></i>';else d.textContent=i+1;
-    });
+    document.querySelectorAll('.ss').forEach(function(e){e.classList.remove('act')});document.getElementById('s'+step).classList.add('act');
+    document.querySelectorAll('.sd').forEach(function(d,i){d.className='sd'+(i===step?' act':i<step?' done':'');if(i<step)d.innerHTML='<i class="fas fa-check" style="font-size:10px"></i>';else d.textContent=i+1;});
     document.querySelectorAll('.sl').forEach(function(l,i){l.className='sl'+(i<step?' done':'')});
     document.getElementById('btnPrev').disabled=step===0;
-    var nb=document.getElementById('btnNext');
-    if(step===TOTAL-1){nb.innerHTML='<i class="fas fa-check"></i> Ver resultado';}
-    else{nb.innerHTML='Siguiente <i class="fas fa-arrow-right"></i>';}
-    window.scrollTo({top:0,behavior:'smooth'});
-    if(step===3)updateCaps();
+    var nb=document.getElementById('btnNext');if(step===TOTAL-1){nb.innerHTML='<i class="fas fa-check"></i> Ver resultado';}else{nb.innerHTML='Siguiente <i class="fas fa-arrow-right"></i>';}
+    window.scrollTo({top:0,behavior:'smooth'});if(step===3)updateCaps();
 }
 
 function showResult(){
     var r=calcular();window._lastResult=r;
-    var h=document.getElementById('resH'),lbl=document.getElementById('resL');
-    var amt=document.getElementById('resA'),sub=document.getElementById('resS');
-    if(r.saldo<0){
-        h.className='rh ref';lbl.textContent='TE DEVUELVEN';
-        amt.textContent=fCOP(Math.abs(r.saldo));
-        sub.textContent='Tus retenciones ('+fCOP(r.ret)+') superan el impuesto calculado ('+fCOP(r.impCalc)+')';
-        confetti();
-    }else if(r.saldo>0){
-        h.className='rh pay';lbl.textContent='IMPUESTO A PAGAR';
-        amt.textContent=fCOP(r.saldo);
-        sub.textContent='Tarifa marginal: '+r.tarifa+'% · Renta gravable: '+r.rUVT.toFixed(1)+' UVT';
-    }else{
-        h.className='rh neu';lbl.textContent='SIN IMPUESTO';
-        amt.textContent='$0';
-        sub.textContent='Tu renta gravable ('+r.rUVT.toFixed(1)+' UVT) esta en el tramo del 0%';
-    }
-    var ob=checkObl();var obB=document.getElementById('obB');
+    var h=document.getElementById('resH'),lbl=document.getElementById('resL'),amt=document.getElementById('resA'),sub=document.getElementById('resS');
+    if(r.saldo<0){h.className='rh ref';lbl.textContent='TE DEVUELVEN';amt.textContent=fCOP(Math.abs(r.saldo));sub.textContent='Tus retenciones ('+fCOP(r.ret)+') superan el impuesto ('+fCOP(r.impCalc)+')';confetti();}
+    else if(r.saldo>0){h.className='rh pay';lbl.textContent='IMPUESTO A PAGAR';amt.textContent=fCOP(r.saldo);sub.textContent='Tarifa marginal: '+r.tarifa+'% · Renta: '+r.rUVT.toFixed(1)+' UVT';}
+    else{h.className='rh neu';lbl.textContent='SIN IMPUESTO';amt.textContent='$0';sub.textContent='Tu renta gravable ('+r.rUVT.toFixed(1)+' UVT) esta en el tramo del 0%';}
+    var ob=checkObl(),obB=document.getElementById('obB');
     if(ob.obl){obB.innerHTML='<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:50px;font-weight:700;font-size:13px;background:var(--err-l);color:var(--err)"><i class="fas fa-exclamation-circle"></i> Obligado a declarar</span>';}
     else{obB.innerHTML='<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:50px;font-weight:700;font-size:13px;background:var(--ok-l);color:var(--ok)"><i class="fas fa-check-circle"></i> No obligado (declaracion voluntaria)</span>';}
     var zeroBox=document.getElementById('zeroBox'),zeroReason=document.getElementById('zeroReason');
-    if(r.impCalc===0){
-        zeroBox.style.display='block';var reason='';
+    if(r.impCalc===0){zeroBox.style.display='block';var reason='';
         if(r.rentaG===0){reason='<b>No tienes renta gravable.</b> Tus ingresos son $0 o estan completamente cubiertos por exenciones y deducciones.';}
-        else if(r.rUVT<1090){
-            reason='<b>Tu renta gravable es '+r.rUVT.toFixed(1)+' UVT, por debajo de 1.090 UVT (primer tramo gravable).</b><br><br>'+
-                'La ley colombiana te considera dentro del rango del 0%. No pagas renta.<br><br>'+
-                '<b>Como funciona:</b><br>'+
-                '1. Tus ingresos laborales: <b>'+fCOP(r.ingLab)+'</b><br>'+
-                '2. Menos exencion del 25%: <b>'+fCOP(r.exLab)+'</b><br>'+
-                '3. Menos deducciones: <b>'+fCOP(r.totDed)+'</b><br>'+
-                '4. Tu renta gravable: <b>'+fCOP(r.rentaG)+'</b> = <b>'+r.rUVT.toFixed(1)+' UVT</b><br>'+
-                '5. El tramo 0% va hasta 1.090 UVT = <b>'+fCOP(1090*UVT)+'</b><br><br>'+
-                (r.ingLab>0?'<b>Para empezar a pagar impuesto necesitas una renta gravable superior a '+fCOP(1090*UVT)+'. Con la exencion del 25%, equivale a un salario anual superior a '+fCOP(1090*UVT/0.75)+'.</b>':'');
-        }
+        else if(r.rUVT<1090){reason='<b>Tu renta gravable es '+r.rUVT.toFixed(1)+' UVT, por debajo de 1.090 UVT.</b><br><br>La ley te considera en el rango del 0%. No pagas renta.<br><br><b>Como funciona:</b><br>1. Ingresos laborales: <b>'+fCOP(r.ingLab)+'</b><br>2. Menos exencion 25%: <b>'+fCOP(r.exLab)+'</b><br>3. Menos deducciones: <b>'+fCOP(r.totDed)+'</b><br>4. Renta gravable: <b>'+fCOP(r.rentaG)+'</b> = <b>'+r.rUVT.toFixed(1)+' UVT</b><br>5. Tramo 0%: hasta 1.090 UVT = <b>'+fCOP(1090*UVT)+'</b><br><br>'+(r.ingLab>0?'<b>Para pagar impuesto necesitas renta gravable superior a '+fCOP(1090*UVT)+'. Con exencion 25%, equivale a salario anual superior a '+fCOP(1090*UVT/0.75)+'.</b>':'');}
         zeroReason.innerHTML=reason;
     }else{zeroBox.style.display='none';}
     var bracketCard=document.getElementById('bracketCard'),bracketInfo=document.getElementById('bracketInfo');
-    if(r.rentaG>0){
-        bracketCard.style.display='block';
-        var tramoTxt=['0% (Exento)','19%','28%','33%','39%'];
-        bracketInfo.innerHTML='Estas en el tramo del <b>'+tramoTxt[r.tramoNum]+'</b> — Renta: '+r.rUVT.toFixed(1)+' UVT';
-        var bars=bracketCard.querySelector('.bracket-bar').children;
-        for(var b=0;b<bars.length;b++){bars[b].style.opacity=b===r.tramoNum?'1':'0.35';bars[b].style.transform=b===r.tramoNum?'scaleY(1.3)':'scaleY(1)';}
+    if(r.rentaG>0){bracketCard.style.display='block';var tramoTxt=['0% (Exento)','19%','28%','33%','39%'];bracketInfo.innerHTML='Estas en el tramo del <b>'+tramoTxt[r.tramoNum]+'</b> — Renta: '+r.rUVT.toFixed(1)+' UVT';
+        var bars=bracketCard.querySelector('.bracket-bar').children;for(var b=0;b<bars.length;b++){bars[b].style.opacity=b===r.tramoNum?'1':'0.35';bars[b].style.transform=b===r.tramoNum?'scaleY(1.3)':'scaleY(1)';}
     }else{bracketCard.style.display='none';}
     var depT=document.getElementById('depT');
-    depT.innerHTML=
-        tr('Ingresos laborales (salarios + pensiones)',fCOP(r.ingLab))+
-        tr('Dinero que no paga impuesto (exencion 25%)','(-) '+fCOP(r.exLab),'sub')+
-        tr('Ingreso neto laboral',fCOP(r.ingNetLab))+
-        tr('Deducciones aplicadas (con topes)','(-) '+fCOP(r.totDed),'sub')+
-        tr('Renta liquida del trabajo',fCOP(r.rlTrab))+
-        tr('Renta de honorarios (neto)',fCOP(r.rlHon))+
-        tr('Renta no laboral',fCOP(r.rlNoLab))+
-        tr('Dividendos gravados',fCOP(r.rlDiv))+
-        tr('RENTA GRAVABLE TOTAL',fCOP(r.rentaG),'tot')+
-        tr('Equivalente en UVT',r.rUVT.toFixed(1)+' UVT')+
-        tr('Tramo / Tarifa marginal',r.tarifa+'%')+
-        tr('Impuesto calculado por tabla',fCOP(r.impCalc))+
-        tr('Retenciones que te practicaron','(-) '+fCOP(r.ret),'sub')+
-        tr(r.saldo>=0?'SALDO A PAGAR':'TE DEVUELVEN',fCOP(Math.abs(r.saldo)),'tot');
+    depT.innerHTML=tr('Ingresos laborales',fCOP(r.ingLab))+tr('Exencion laboral 25%','(-) '+fCOP(r.exLab),'sub')+tr('Ingreso neto laboral',fCOP(r.ingNetLab))+tr('Deducciones aplicadas','(-) '+fCOP(r.totDed),'sub')+tr('Renta liquida trabajo',fCOP(r.rlTrab))+tr('Renta honorarios',fCOP(r.rlHon))+tr('Renta no laboral',fCOP(r.rlNoLab))+tr('Dividendos gravados',fCOP(r.rlDiv))+tr('RENTA GRAVABLE TOTAL',fCOP(r.rentaG),'tot')+tr('En UVT',r.rUVT.toFixed(1)+' UVT')+tr('Tarifa marginal',r.tarifa+'%')+tr('Impuesto calculado',fCOP(r.impCalc))+tr('Retenciones','(-) '+fCOP(r.ret),'sub')+tr(r.saldo>=0?'SALDO A PAGAR':'TE DEVUELVEN',fCOP(Math.abs(r.saldo)),'tot');
     var casCard=document.getElementById('casCard'),casT=document.getElementById('casT');
-    if(PAGADO||DEMO){
-        casCard.style.display='block';
-        casT.innerHTML=
-            ctr('56','Ingresos por salarios',r.ingLab)+ctr('57','Ingresos por pensiones',pI('iPenR'))+
-            ctr('58','Ingresos por honorarios',r.ingHon)+ctr('59','Ingresos por arrendamientos',pI('iArr'))+
-            ctr('60','Dividendos y participaciones',r.rlDiv)+ctr('61','Otros ingresos',pI('iOtrI'))+
-            ctr('62','Costos actividad independiente',pI('iCos'))+
-            ctr('63','Deduccion salud (tope '+fCOP(r.tS)+')',r.aS)+
-            ctr('64','Deduccion pension/AFC (tope '+fCOP(r.tP)+')',r.aP)+
-            ctr('65','Deduccion intereses vivienda (tope '+fCOP(r.tV)+')',r.aV)+
-            ctr('66','Deduccion donaciones (tope '+fCOP(r.tD)+')',r.aD)+
-            ctr('67','Deduccion dependientes (tope '+fCOP(r.tDp)+')',r.aDp)+
-            ctr('68','Exencion laboral 25%',r.exLab)+ctr('69','Renta gravable',r.rentaG)+
-            ctr('70','Impuesto calculado',r.impCalc)+ctr('71','Retenciones practicadas',r.ret)+
-            ctr('72',r.saldo>=0?'Saldo a pagar':'Saldo a favor',Math.abs(r.saldo));
-    }else{
-        casCard.style.display='block';
-        casT.innerHTML='<tr><td colspan="2" style="text-align:center;padding:20px;color:var(--g400)"><i class="fas fa-lock" style="font-size:24px;display:block;margin-bottom:8px;color:var(--acc)"></i>Descarga el PDF para ver la guia completa con todas las casillas</td></tr>';
-    }
+    if(PAGADO||DEMO){casCard.style.display='block';casT.innerHTML=ctr('56','Ingresos salarios',r.ingLab)+ctr('57','Ingresos pensiones',pI('iPenR'))+ctr('58','Honorarios',r.ingHon)+ctr('59','Arrendamientos',pI('iArr'))+ctr('60','Dividendos',r.rlDiv)+ctr('61','Otros ingresos',pI('iOtrI'))+ctr('62','Costos actividad indep.',pI('iCos'))+ctr('63','Ded. salud',r.aS)+ctr('64','Ded. pension/AFC',r.aP)+ctr('65','Ded. intereses vivienda',r.aV)+ctr('66','Ded. donaciones',r.aD)+ctr('67','Ded. dependientes',r.aDp)+ctr('68','Exencion laboral 25%',r.exLab)+ctr('69','Renta gravable',r.rentaG)+ctr('70','Impuesto calculado',r.impCalc)+ctr('71','Retenciones',r.ret)+ctr('72',r.saldo>=0?'Saldo a pagar':'Saldo a favor',Math.abs(r.saldo));}
+    else{casCard.style.display='block';casT.innerHTML='<tr><td colspan="2" style="text-align:center;padding:20px;color:var(--g400)"><i class="fas fa-lock" style="font-size:24px;display:block;margin-bottom:8px;color:var(--acc)"></i>Descarga el PDF para ver la guia completa</td></tr>';}
     goStep(4);
 }
 
@@ -586,142 +467,81 @@ function ctr(cas,con,val){return'<tr><td><span class="cs">Cas. '+cas+'</span>'+c
 
 function fillDemo(){
     sI('iPat',230000000);sI('iIng',95000000);sI('iCons',35000000);sI('iConsi',55000000);sI('iComp',28000000);
-    sI('iSal',85000000);sI('iPenR',0);sI('iRet',14000000);
-    sI('iHon',0);sI('iCos',0);sI('iRetI',0);
+    sI('iSal',85000000);sI('iPenR',0);sI('iRet',14000000);sI('iHon',0);sI('iCos',0);sI('iRetI',0);
     sI('iDiv',15000000);sI('iArr',8000000);sI('iOtrI',0);sI('iRetO',2000000);
     sI('iSalud',800000);sI('iPV',1000000);sI('iViv',3500000);sI('iDon',0);sI('iDep',2000000);
-    document.getElementById('iNom').value='Juan Perez Garcia';
-    document.getElementById('iCed').value='79123456';
-    document.getElementById('iEma').value='juan@correo.com';
-    checkObl();updateRunning();updateCaps();
-    toast('Datos de ejemplo cargados. Avanza para ver el calculo.','ok',4000);
+    document.getElementById('iNom').value='Juan Perez Garcia';document.getElementById('iCed').value='79123456';document.getElementById('iEma').value='juan@correo.com';
+    checkObl();updateRunning();updateCaps();toast('Datos de ejemplo cargados. Avanza para ver el calculo.','ok',4000);
+}
+
+function generarContenidoPDF(){
+    var r=window._lastResult;if(!r)return null;
+    var nom=document.getElementById('iNom').value||'Contribuyente',ced=document.getElementById('iCed').value||'N/A';
+    var txt='RENTAFACIL COLOMBIA - HOJA DE TRABAJO\nAno gravable '+ANIO+' | UVT: $'+UVT.toLocaleString('es-CO')+' | Fecha: '+new Date().toLocaleDateString('es-CO')+'\n================================================\n\nDATOS DEL CONTRIBUYENTE\nNombre: '+nom+'\nCedula: '+ced+'\n\nDEPURACION DE LA RENTA\n------------------------------------------------\n';
+    txt+='Ingresos laborales:              '+fCOP(r.ingLab)+'\n(-) Exencion laboral 25%:        '+fCOP(r.exLab)+'\n= Ingreso neto laboral:          '+fCOP(r.ingNetLab)+'\n(-) Deducciones aplicadas:       '+fCOP(r.totDed)+'\n= Renta liquida del trabajo:     '+fCOP(r.rlTrab)+'\nRenta honorarios (neto):         '+fCOP(r.rlHon)+'\nRenta no laboral:                '+fCOP(r.rlNoLab)+'\nDividendos gravados:             '+fCOP(r.rlDiv)+'\n================================================\nRENTA GRAVABLE TOTAL:            '+fCOP(r.rentaG)+'\nEquivalente en UVT:              '+r.rUVT.toFixed(1)+' UVT\nTarifa marginal:                 '+r.tarifa+'%\nImpuesto calculado:              '+fCOP(r.impCalc)+'\n(-) Retenciones:                 '+fCOP(r.ret)+'\n================================================\n'+(r.saldo>=0?'SALDO A PAGAR:                  ':'TE DEVUELVEN:                   ')+fCOP(Math.abs(r.saldo))+'\n\nGUIA FORMULARIO 210 - CASILLAS\n------------------------------------------------\n';
+    var cas=[['56','Ingresos salarios',r.ingLab],['57','Ingresos pensiones',pI('iPenR')],['58','Honorarios',r.ingHon],['59','Arrendamientos',pI('iArr')],['60','Dividendos',r.rlDiv],['61','Otros ingresos',pI('iOtrI')],['62','Costos actividad indep.',pI('iCos')],['63','Ded. salud',r.aS],['64','Ded. pension/AFC',r.aP],['65','Ded. intereses vivienda',r.aV],['66','Ded. donaciones',r.aD],['67','Ded. dependientes',r.aDp],['68','Exencion laboral 25%',r.exLab],['69','Renta gravable',r.rentaG],['70','Impuesto calculado',r.impCalc],['71','Retenciones',r.ret],['72',r.saldo>=0?'Saldo a pagar':'Saldo a favor',Math.abs(r.saldo)]];
+    cas.forEach(function(c){txt+='Cas. '+c[0]+' '+c[1]+': '+fCOP(c[2])+'\n'});
+    txt+='\nAVISO: Guia informativa. Verifica con un contador publico.\nGenerado por RentaFacil Colombia';
+    return txt;
 }
 
 function genPDF(){
-    var r=window._lastResult;if(!r){toast('Calcula primero','err');return}
-    var nom=document.getElementById('iNom').value||'Contribuyente';
-    var ced=document.getElementById('iCed').value||'N/A';
-    var doc=new jspdf.jsPDF();
-    doc.setFillColor(10,123,66);doc.rect(0,0,210,32,'F');
-    doc.setTextColor(255,255,255);doc.setFontSize(18);doc.setFont('helvetica','bold');
-    doc.text('RentaFacil Colombia - Hoja de Trabajo',105,14,{align:'center'});
-    doc.setFontSize(9);doc.setFont('helvetica','normal');
-    doc.text('Ano gravable '+ANIO+' | UVT: $'+UVT.toLocaleString('es-CO')+' | Fecha: '+new Date().toLocaleDateString('es-CO'),105,24,{align:'center'});
-    doc.setTextColor(30,41,59);doc.setFontSize(11);doc.setFont('helvetica','bold');
-    doc.text('Datos del Contribuyente',14,42);
-    doc.setFontSize(9);doc.setFont('helvetica','normal');
-    doc.text('Nombre: '+sinTilde(nom),14,49);doc.text('CC: '+ced,14,54);
-    doc.setFontSize(11);doc.setFont('helvetica','bold');doc.text('Depuracion de la Renta (Arts. 335-337 ET)',14,66);
-    doc.setDrawColor(10,123,66);doc.line(14,68,196,68);
-    doc.setFontSize(8);doc.setFont('helvetica','normal');var y=73;
-    var lines=[
-        ['Ingresos laborales',fCOP(r.ingLab)],
-        ['(-) Exencion laboral 25% (tope '+fCOP(r.topeExLab)+')',fCOP(r.exLab)],
-        ['= Ingreso neto laboral',fCOP(r.ingNetLab)],
-        ['(-) Deducciones aplicadas',fCOP(r.totDed)],
-        ['    Salud (tope '+fCOP(r.tS)+')',fCOP(r.aS)],['    Pension/AFC (tope '+fCOP(r.tP)+')',fCOP(r.aP)],
-        ['    Intereses vivienda (tope '+fCOP(r.tV)+')',fCOP(r.aV)],['    Donaciones (tope '+fCOP(r.tD)+')',fCOP(r.aD)],
-        ['    Dependientes (tope '+fCOP(r.tDp)+')',fCOP(r.aDp)],
-        ['= Renta liquida del trabajo',fCOP(r.rlTrab)],['Renta de honorarios (neto)',fCOP(r.rlHon)],
-        ['Renta no laboral',fCOP(r.rlNoLab)],['Dividendos gravados',fCOP(r.rlDiv)],
-        ['= RENTA GRAVABLE TOTAL',fCOP(r.rentaG)],['   Equivalente en UVT',r.rUVT.toFixed(1)+' UVT'],
-        ['   Tarifa marginal',r.tarifa+'%'],['Impuesto calculado',fCOP(r.impCalc)],
-        ['(-) Retenciones practicadas',fCOP(r.ret)],
-        [r.saldo>=0?'= SALDO A PAGAR':'= TE DEVUELVEN',fCOP(Math.abs(r.saldo))]
-    ];
-    lines.forEach(function(l){
-        if(y>275){doc.addPage();y=20}
-        var isBold=l[0].charAt(0)==='='||l[0].indexOf('TOTAL')>=0||l[0].indexOf('SALDO')>=0||l[0].indexOf('DEVUELVEN')>=0;
-        doc.setFont('helvetica',isBold?'bold':'normal');
-        if(isBold){doc.setDrawColor(200,200,200);doc.line(14,y-1,196,y-1)}
-        doc.text(sinTilde(l[0]),14,y);doc.text(l[1],196,y,{align:'right'});y+=6;
-    });
-    y+=10;if(y>250){doc.addPage();y=20}
-    doc.setFontSize(11);doc.setFont('helvetica','bold');doc.text('Guia Formulario 210 - Casillas',14,y);y+=8;
-    doc.setDrawColor(10,123,66);doc.line(14,y,196,y);y+=4;doc.setFontSize(8);
-    var cas=[
-        ['56','Ingresos por salarios',r.ingLab],['57','Ingresos por pensiones',pI('iPenR')],
-        ['58','Ingresos por honorarios',r.ingHon],['59','Ingresos por arrendamientos',pI('iArr')],
-        ['60','Dividendos y participaciones',r.rlDiv],['61','Otros ingresos',pI('iOtrI')],
-        ['62','Costos actividad independiente',pI('iCos')],
-        ['63','Ded. salud',r.aS],['64','Ded. pension/AFC',r.aP],['65','Ded. intereses vivienda',r.aV],
-        ['66','Ded. donaciones',r.aD],['67','Ded. dependientes',r.aDp],
-        ['68','Exencion laboral 25%',r.exLab],['69','Renta gravable',r.rentaG],
-        ['70','Impuesto calculado',r.impCalc],['71','Retenciones practicadas',r.ret],
-        ['72',r.saldo>=0?'Saldo a pagar':'Saldo a favor',Math.abs(r.saldo)]
-    ];
-    cas.forEach(function(c){
-        if(y>275){doc.addPage();y=20}
-        doc.setFont('helvetica','bold');doc.text('Cas. '+c[0],14,y);
-        doc.setFont('helvetica','normal');doc.text(sinTilde(c[1]),38,y);
-        doc.text(fCOP(c[2]),196,y,{align:'right'});y+=6;
-    });
-    y+=8;if(y>265){doc.addPage();y=20}
-    doc.setFontSize(7);doc.setTextColor(150);
-    doc.text(sinTilde('AVISO: Esta hoja de trabajo es una guia informativa y no constituye una declaracion oficial de renta.'),14,y,{maxWidth:180});
-    doc.text(sinTilde('Los calculos se basan en la normativa tributaria vigente y el UVT asumido ($'+UVT.toLocaleString('es-CO')+'). Verifica con un contador publico.'),14,y+4,{maxWidth:180});
-    doc.text(sinTilde('Generado por RentaFacil Colombia | '+new Date().toLocaleString('es-CO')),14,y+8,{maxWidth:180});
-    doc.save('RentaFacil_HojaDeTrabajo_'+ced+'.pdf');
-    toast('PDF descargado correctamente','ok');
+    var r=window._lastResult;
+    if(!r){toast('Primero haz el calculo completo hasta ver el resultado','err');return}
+    if(typeof jspdf!=='undefined'){
+        try{
+            var nom=document.getElementById('iNom').value||'Contribuyente',ced=document.getElementById('iCed').value||'N/A';
+            var doc=new jspdf.jsPDF();
+            doc.setFillColor(10,123,66);doc.rect(0,0,210,32,'F');
+            doc.setTextColor(255,255,255);doc.setFontSize(18);doc.setFont('helvetica','bold');
+            doc.text('RentaFacil Colombia - Hoja de Trabajo',105,14,{align:'center'});
+            doc.setFontSize(9);doc.setFont('helvetica','normal');
+            doc.text('Ano gravable '+ANIO+' | UVT: $'+UVT.toLocaleString('es-CO')+' | Fecha: '+new Date().toLocaleDateString('es-CO'),105,24,{align:'center'});
+            doc.setTextColor(30,41,59);doc.setFontSize(11);doc.setFont('helvetica','bold');doc.text('Datos del Contribuyente',14,42);
+            doc.setFontSize(9);doc.setFont('helvetica','normal');doc.text('Nombre: '+sinTilde(nom),14,49);doc.text('CC: '+ced,14,54);
+            doc.setFontSize(11);doc.setFont('helvetica','bold');doc.text('Depuracion de la Renta (Arts. 335-337 ET)',14,66);
+            doc.setDrawColor(10,123,66);doc.line(14,68,196,68);doc.setFontSize(8);doc.setFont('helvetica','normal');var y=73;
+            var lines=[['Ingresos laborales',fCOP(r.ingLab)],['(-) Exencion laboral 25%',fCOP(r.exLab)],['= Ingreso neto laboral',fCOP(r.ingNetLab)],['(-) Deducciones aplicadas',fCOP(r.totDed)],['    Salud',fCOP(r.aS)],['    Pension/AFC',fCOP(r.aP)],['    Intereses vivienda',fCOP(r.aV)],['    Donaciones',fCOP(r.aD)],['    Dependientes',fCOP(r.aDp)],['= Renta liquida trabajo',fCOP(r.rlTrab)],['Renta honorarios',fCOP(r.rlHon)],['Renta no laboral',fCOP(r.rlNoLab)],['Dividendos gravados',fCOP(r.rlDiv)],['= RENTA GRAVABLE TOTAL',fCOP(r.rentaG)],['   UVT',r.rUVT.toFixed(1)],['   Tarifa',r.tarifa+'%'],['Impuesto calculado',fCOP(r.impCalc)],['(-) Retenciones',fCOP(r.ret)],[r.saldo>=0?'= SALDO A PAGAR':'= TE DEVUELVEN',fCOP(Math.abs(r.saldo))]];
+            lines.forEach(function(l){if(y>275){doc.addPage();y=20}var isBold=l[0].charAt(0)==='='||l[0].indexOf('TOTAL')>=0||l[0].indexOf('SALDO')>=0||l[0].indexOf('DEVUELVEN')>=0;doc.setFont('helvetica',isBold?'bold':'normal');if(isBold){doc.setDrawColor(200,200,200);doc.line(14,y-1,196,y-1)}doc.text(sinTilde(l[0]),14,y);doc.text(l[1],196,y,{align:'right'});y+=6;});
+            y+=10;if(y>250){doc.addPage();y=20}doc.setFontSize(11);doc.setFont('helvetica','bold');doc.text('Guia Formulario 210 - Casillas',14,y);y+=8;doc.setDrawColor(10,123,66);doc.line(14,y,196,y);y+=4;doc.setFontSize(8);
+            var cas=[['56','Ingresos salarios',r.ingLab],['57','Ingresos pensiones',pI('iPenR')],['58','Honorarios',r.ingHon],['59','Arrendamientos',pI('iArr')],['60','Dividendos',r.rlDiv],['61','Otros ingresos',pI('iOtrI')],['62','Costos actividad indep.',pI('iCos')],['63','Ded. salud',r.aS],['64','Ded. pension/AFC',r.aP],['65','Ded. intereses vivienda',r.aV],['66','Ded. donaciones',r.aD],['67','Ded. dependientes',r.aDp],['68','Exencion laboral 25%',r.exLab],['69','Renta gravable',r.rentaG],['70','Impuesto calculado',r.impCalc],['71','Retenciones',r.ret],['72',r.saldo>=0?'Saldo a pagar':'Saldo a favor',Math.abs(r.saldo)]];
+            cas.forEach(function(c){if(y>275){doc.addPage();y=20}doc.setFont('helvetica','bold');doc.text('Cas. '+c[0],14,y);doc.setFont('helvetica','normal');doc.text(sinTilde(c[1]),38,y);doc.text(fCOP(c[2]),196,y,{align:'right'});y+=6;});
+            y+=8;if(y>265){doc.addPage();y=20}doc.setFontSize(7);doc.setTextColor(150);
+            doc.text(sinTilde('AVISO: Guia informativa. No constituye declaracion oficial. Verifica con contador publico.'),14,y,{maxWidth:180});
+            doc.text(sinTilde('Generado por RentaFacil Colombia | '+new Date().toLocaleString('es-CO')),14,y+4,{maxWidth:180});
+            doc.save('RentaFacil_HojaDeTrabajo_'+ced+'.pdf');
+            toast('PDF descargado correctamente','ok');return;
+        }catch(e){console.error('Error jsPDF:',e)}
+    }
+    var contenido=generarContenidoPDF();
+    if(!contenido){toast('Error al generar','err');return}
+    try{var blob=new Blob([contenido],{type:'text/plain;charset=utf-8'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='RentaFacil_HojaDeTrabajo.txt';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast('Archivo descargado (formato texto)','ok',5000);}
+    catch(e2){toast('Error: '+e2.message,'err',5000)}
 }
 
 function confetti(){
-    var cv=document.getElementById('cc'),ctx=cv.getContext('2d');
-    cv.width=window.innerWidth;cv.height=window.innerHeight;
+    var cv=document.getElementById('cc'),ctx=cv.getContext('2d');cv.width=window.innerWidth;cv.height=window.innerHeight;
     var P=[];var colors=['#0A7B42','#D4A017','#10B981','#F59E0B','#3B82F6','#EF4444'];
-    for(var i=0;i<100;i++){P.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,
-        w:Math.random()*8+4,h:Math.random()*6+3,c:colors[Math.floor(Math.random()*colors.length)],
-        vx:(Math.random()-0.5)*3,vy:Math.random()*4+2,rot:Math.random()*360,vr:(Math.random()-0.5)*8})}
-    var f=0;function draw(){ctx.clearRect(0,0,cv.width,cv.height);P.forEach(function(p){
-        p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;
-        ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);
-        ctx.fillStyle=p.c;ctx.globalAlpha=Math.max(0,1-f/100);
-        ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});
-    f++;if(f<120)requestAnimationFrame(draw);else ctx.clearRect(0,0,cv.width,cv.height)}
-    draw();
+    for(var i=0;i<100;i++){P.push({x:Math.random()*cv.width,y:Math.random()*cv.height-cv.height,w:Math.random()*8+4,h:Math.random()*6+3,c:colors[Math.floor(Math.random()*colors.length)],vx:(Math.random()-0.5)*3,vy:Math.random()*4+2,rot:Math.random()*360,vr:(Math.random()-0.5)*8})}
+    var f=0;function draw(){ctx.clearRect(0,0,cv.width,cv.height);P.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot*Math.PI/180);ctx.fillStyle=p.c;ctx.globalAlpha=Math.max(0,1-f/100);ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});f++;if(f<120)requestAnimationFrame(draw);else ctx.clearRect(0,0,cv.width,cv.height)}draw();
 }
 
 document.addEventListener('DOMContentLoaded',function(){
 
-    // Detector de pago Wompi: si vuelve de Wompi, la URL tiene ?pago=ok
-    var urlParams=new URLSearchParams(window.location.search);
-    if(urlParams.get('pago')==='ok'){
-        PAGADO=true;
-        window.history.replaceState({},document.title,window.location.pathname);
-        toast('Pago exitoso! Tu PDF esta desbloqueado.','ok',5000);
-    }
-
-    document.querySelectorAll('input[inputmode="numeric"]').forEach(function(inp){
-        inp.addEventListener('input',function(){fIV(inp)});
-    });
+    document.querySelectorAll('input[inputmode="numeric"]').forEach(function(inp){inp.addEventListener('input',function(){fIV(inp)})});
 
     var setTopes=function(){
-        document.getElementById('tPat').textContent=fCOP(OBL_UVT.patrimonio*UVT);
-        document.getElementById('tIng').textContent=fCOP(OBL_UVT.ingresos*UVT);
-        document.getElementById('tCons').textContent=fCOP(OBL_UVT.consumos*UVT);
-        document.getElementById('tConsi').textContent=fCOP(OBL_UVT.consignaciones*UVT);
+        document.getElementById('tPat').textContent=fCOP(OBL_UVT.patrimonio*UVT);document.getElementById('tIng').textContent=fCOP(OBL_UVT.ingresos*UVT);
+        document.getElementById('tCons').textContent=fCOP(OBL_UVT.consumos*UVT);document.getElementById('tConsi').textContent=fCOP(OBL_UVT.consignaciones*UVT);
         document.getElementById('tComp').textContent=fCOP(OBL_UVT.compras*UVT);
     };setTopes();
 
-    ['iPat','iIng','iCons','iConsi','iComp'].forEach(function(id){
-        document.getElementById(id).addEventListener('input',function(){checkObl();updateRunning()});
-    });
-    ['iSal','iPenR','iRet','iHon','iCos','iRetI','iDiv','iArr','iOtrI','iRetO',
-     'iSalud','iPV','iViv','iDon','iDep'].forEach(function(id){
-        document.getElementById(id).addEventListener('input',function(){updateCaps()});
-    });
+    ['iPat','iIng','iCons','iConsi','iComp'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){checkObl();updateRunning()})});
+    ['iSal','iPenR','iRet','iHon','iCos','iRetI','iDiv','iArr','iOtrI','iRetO','iSalud','iPV','iViv','iDon','iDep'].forEach(function(id){document.getElementById(id).addEventListener('input',function(){updateCaps()})});
 
-    document.querySelectorAll('.itab').forEach(function(tab){
-        tab.addEventListener('click',function(){
-            document.querySelectorAll('.itab').forEach(function(t){t.classList.remove('act')});
-            document.querySelectorAll('.ipnl').forEach(function(p){p.classList.remove('act')});
-            tab.classList.add('act');document.getElementById('p-'+tab.dataset.tab).classList.add('act');
-        });
-    });
+    document.querySelectorAll('.itab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.itab').forEach(function(t){t.classList.remove('act')});document.querySelectorAll('.ipnl').forEach(function(p){p.classList.remove('act')});tab.classList.add('act');document.getElementById('p-'+tab.dataset.tab).classList.add('act')})});
 
-    document.getElementById('btnNext').addEventListener('click',function(){
-        if(step===TOTAL-1){showResult()}else{goStep(step+1)}
-    });
+    document.getElementById('btnNext').addEventListener('click',function(){if(step===TOTAL-1){showResult()}else{goStep(step+1)}});
     document.getElementById('btnPrev').addEventListener('click',function(){goStep(step-1)});
     document.getElementById('btnDemo').addEventListener('click',fillDemo);
 
@@ -729,44 +549,67 @@ document.addEventListener('DOMContentLoaded',function(){
     document.getElementById('btnClsCfg').addEventListener('click',function(){document.getElementById('mCfg').classList.remove('act')});
     document.getElementById('btnSaveCfg').addEventListener('click',function(){
         var nu=parseInt(document.getElementById('iUVT2').value.replace(/\D/g,''),10);
-        if(nu>0){UVT=nu;ANIO=document.getElementById('iAnio2').value||'2025';DEMO=document.getElementById('iDemo').checked;
-            setTopes();updateCaps();checkObl();document.getElementById('mCfg').classList.remove('act');
-            toast('Configuracion guardada. UVT=$'+UVT.toLocaleString('es-CO'),'ok');
-        }else{toast('Ingresa un UVT valido','err')}
+        if(nu>0){UVT=nu;ANIO=document.getElementById('iAnio2').value||'2025';DEMO=document.getElementById('iDemo').checked;setTopes();updateCaps();checkObl();document.getElementById('mCfg').classList.remove('act');toast('Configuracion guardada','ok');}
+        else{toast('Ingresa un UVT valido','err')}
     });
 
-    // Boton PDF: si ya pago o es demo, genera directo. Sino, abre modal Wompi.
+    // BOTON PDF
     document.getElementById('btnPDF').addEventListener('click',function(){
         if(DEMO||PAGADO){genPDF();}
         else{document.getElementById('mPay').classList.add('act');}
     });
 
-    // Boton Wompi: abre la pasarela de pago en nueva pestana
-    document.getElementById('btnWompiPay').addEventListener('click',function(){
-        window.open(WOMPI_URL,'_blank');
+    // INICIALIZAR PAYPAL - Renderiza el boton dorado oficial de PayPal
+    if(typeof paypal!=='undefined'){
+        try{
+            paypal.Buttons({
+                style:{shape:'rect',color:'gold',layout:'vertical',label:'paypal'},
+                createOrder:function(data,actions){
+                    return actions.order.create({
+                        purchase_units:[{
+                            amount:{value:'2.00',currency_code:'USD'},
+                            description:'RentaFacil - Hoja de Trabajo PDF'
+                        }]
+                    });
+                },
+                onApprove:function(data,actions){
+                    return actions.order.capture().then(function(){
+                        PAGADO=true;
+                        document.getElementById('mPay').classList.remove('act');
+                        toast('Pago exitoso! Descargando PDF...','ok',4000);
+                        setTimeout(genPDF,500);
+                    });
+                },
+                onError:function(){
+                    toast('Error en el pago. Usa el enlace de respaldo o el boton Ya pague.','err');
+                    document.getElementById('paypal-fallback').style.display='block';
+                }
+            }).render('#paypal-button-container');
+        }catch(e){
+            document.getElementById('paypal-fallback').style.display='block';
+        }
+    }else{
+        document.getElementById('paypal-fallback').style.display='block';
+    }
+
+    // BOTON YA PAGUE
+    document.getElementById('btnYaPague').addEventListener('click',function(){
+        PAGADO=true;document.getElementById('mPay').classList.remove('act');toast('Pago confirmado. Descargando PDF...','ok',4000);genPDF();
     });
 
-    // Cerrar modal pago
+    // CERRAR MODAL PAGO
     document.getElementById('btnClsPay').addEventListener('click',function(){document.getElementById('mPay').classList.remove('act')});
 
-    // WhatsApp: solo resumen breve
+    // WHATSAPP
     document.getElementById('btnWA').addEventListener('click',function(){
         var r=window._lastResult;if(!r){toast('Calcula primero','err');return}
-        var tel=document.getElementById('iTelC').value.replace(/\D/g,'');
-        var nom=document.getElementById('iNom').value||'Mi cliente';
+        var tel=document.getElementById('iTelC').value.replace(/\D/g,''),nom=document.getElementById('iNom').value||'Mi cliente';
         var tipo=r.saldo>=0?'A PAGAR':'A FAVOR (DEVOLUCION)';
-        var msg=encodeURIComponent(
-            'Hola, te comparto el resumen de mi declaracion de renta:\n\n'+
-            'Contribuyente: '+nom+'\n'+
-            'Renta gravable: '+fCOP(r.rentaG)+'\n'+
-            'Saldo '+tipo+': '+fCOP(Math.abs(r.saldo))+'\n\n'+
-            'Si necesitas la guia completa con las casillas del Formulario 210, te la puedo enviar en PDF.'
-        );
-        var url=tel?'https://wa.me/57'+tel+'?text='+msg:'https://wa.me/?text='+msg;
-        window.open(url,'_blank');
+        var msg=encodeURIComponent('Hola, te comparto el resumen de mi declaracion de renta:\n\nContribuyente: '+nom+'\nRenta gravable: '+fCOP(r.rentaG)+'\nSaldo '+tipo+': '+fCOP(Math.abs(r.saldo))+'\n\nSi necesitas la guia completa con las casillas del Formulario 210, te la puedo enviar en PDF.');
+        var url=tel?'https://wa.me/57'+tel+'?text='+msg:'https://wa.me/?text='+msg;window.open(url,'_blank');
     });
 
-    // Reset
+    // RESET
     document.getElementById('btnRst').addEventListener('click',function(){
         document.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"]').forEach(function(i){i.value=''});
         document.querySelectorAll('input[inputmode="numeric"]').forEach(function(i){i.value=''});
@@ -774,10 +617,8 @@ document.addEventListener('DOMContentLoaded',function(){
         PAGADO=false;window._lastResult=null;goStep(0);toast('Calculo reiniciado','ok');
     });
 
-    // Cerrar modales con click fuera
-    document.querySelectorAll('.mo').forEach(function(m){
-        m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('act')});
-    });
+    // CERRAR MODALES
+    document.querySelectorAll('.mo').forEach(function(m){m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('act')})});
 
 });
 
