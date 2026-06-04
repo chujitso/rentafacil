@@ -277,7 +277,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <div style="font-size:13px;color:#6B7280;margin-bottom:20px;line-height:1.6">Ajusta los parametros del calculo tributario</div>
 <div class="fg"><label class="fl">Valor UVT 2026 (COP)</label><div class="ip"><input class="fi" id="iUVT2" value="47.000" inputmode="numeric"></div><div class="fh">Si la DIAN publica otro valor, actualizalo aqui</div></div>
 <div class="fg"><label class="fl">Ano gravable</label><input class="fi" id="iAnio2" value="2025" style="padding-left:12px"></div>
-<div class="tg"><label class="tg2"><input type="checkbox" id="iDemo" checked><span class="tg3"></span></label><span class="tg4">Modo demo (PDF gratis para prueba)</span></div>
+<div class="tg"><label class="tg2"><input type="checkbox" id="iDemo"><span class="tg3"></span></label><span class="tg4">Modo demo (PDF gratis para prueba)</span></div>
 <button class="btn btn-p btn-blk" style="margin-top:14px" id="btnSaveCfg">Guardar</button>
 <button class="btn btn-s btn-blk" style="margin-top:6px" id="btnClsCfg">Cancelar</button>
 </div>
@@ -338,7 +338,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 var PAYPAL_LINK='https://paypal.me/chujitso/2';
 var UVT=47000;
 var ANIO=2025;
-var DEMO=true;
+var DEMO=false;
 var PAGADO=false;
 
 var TOPES={salud:25,pension:25,donaciones:30,vivienda:100,dependientes:32};
