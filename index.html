@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AV4ZCpUFA95_FJr1JxiHC_CUrEyVkL-hyvDZlRgP-hm4LLziIT6-nJN1NFrZ31O5Y9CBryJ20v1PpmwE&components=buttons&currency=USD&intent=capture"></script>
 <style>
 :root{--pri:#0A7B42;--pri-d:#065A30;--pri-l:#E6F4ED;--pri-50:#F0FAF4;--acc:#D4A017;--acc-l:#FFF8E1;--ok:#059669;--ok-l:#D1FAE5;--err:#DC2626;--err-l:#FEE2E2;--warn:#F59E0B;--warn-l:#FEF3C7;--g50:#F8FAF9;--g100:#F1F3F2;--g200:#E2E6E4;--g300:#CDD3D0;--g400:#9CA3AF;--g500:#6B7280;--g600:#4B5563;--g700:#374151;--g800:#1F2937;--g900:#111827;--w:#FFF;--r:12px;--font:'Outfit',sans-serif;--hh:60px;--bh:72px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -137,7 +136,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 <body>
 
 <header class="hdr">
-<div class="logo"><div class="logo-i">R</div>Renta<b>Fácil</b></div>
+<div class="logo"><div class="logo-i">R</div>Renta<b>Facil</b></div>
 <div class="si" id="si">
 <div class="sd act" data-s="0">1</div><div class="sl"></div>
 <div class="sd" data-s="1">2</div><div class="sl"></div>
@@ -283,12 +282,12 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 </div>
 </div>
 
-<!-- MODAL PAGO PAYPAL -->
+<!-- MODAL PAGO WOMPI -->
 <div class="mo" id="mPay">
 <div class="mc2" style="background:#FAFAFA;border-radius:24px 24px 0 0">
   <div class="mh2"></div>
   <div style="text-align:center;margin-bottom:24px">
-    <div style="width:72px;height:72px;background:linear-gradient(135deg,#0A7B42,#065A30);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 20px rgba(10,123,66,.25)">
+    <div style="width:72px;height:72px;background:linear-gradient(135deg,#6B21A8,#4C1D95);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 8px 20px rgba(107,33,168,.25)">
       <i class="fas fa-file-invoice-dollar" style="color:#fff;font-size:28px"></i>
     </div>
     <h2 style="font-size:22px;font-weight:800;color:#111827;margin:0 0 6px">Desbloquea tu Hoja de Trabajo</h2>
@@ -302,7 +301,7 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       </div>
       <div style="text-align:right">
         <div style="font-size:12px;color:#9CA3AF;text-decoration:line-through">$25.000</div>
-        <div style="font-size:20px;font-weight:900;color:#0A7B42">$2 USD</div>
+        <div style="font-size:20px;font-weight:900;color:#6B21A8">$4.900 COP</div>
       </div>
     </div>
     <div style="border-top:1px dashed #E5E7EB;margin:14px 0"></div>
@@ -312,19 +311,17 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
       <div style="display:flex;align-items:center;gap:8px"><i class="fas fa-check-circle" style="color:#10B981"></i> Depuracion paso a paso explicada</div>
     </div>
   </div>
-  <!-- Contenedor donde PayPal renderiza su boton dorado -->
-  <div id="paypal-button-container" style="margin-bottom:14px"></div>
-  <!-- Enlace de respaldo si PayPal no carga -->
-  <div id="paypal-fallback" style="display:none;margin-bottom:14px">
-    <a href="https://paypal.me/chujitso/2" target="_blank" class="btn btn-blk" style="padding:18px 24px;border-radius:14px;background:linear-gradient(135deg,#003087,#001F5B);color:#fff;font-size:17px;font-weight:800;box-shadow:0 6px 20px rgba(0,48,135,.35);text-decoration:none">
-      <i class="fab fa-paypal" style="font-size:18px"></i> Pagar $2 USD con PayPal
-    </a>
-  </div>
+  
+  <!-- ⬇️ AQUÍ PONES TU ENLACE REAL DE WOMPI (Empieza con https://checkout.wompi.co/l/...) ⬇️ -->
+  <a href="https://checkout.wompi.co/l/Dmtj2R" target="_blank" id="btnWompiPay" class="btn btn-blk" style="padding:18px 24px;border-radius:14px;background:linear-gradient(135deg,#6B21A8,#4C1D95);color:#fff;font-size:17px;font-weight:800;box-shadow:0 6px 20px rgba(107,33,168,.35);text-decoration:none;margin-bottom:10px;">
+    <i class="fas fa-wallet"></i> Pagar $4.900 con Wompi
+  </a>
+  
   <button class="btn btn-blk" id="btnYaPague" style="margin-top:6px;padding:14px;border-radius:12px;background:#DCFCE7;color:#065F46;font-size:14px;font-weight:700;border:2px solid #86EFAC">
-    <i class="fas fa-check-circle"></i> Ya realice mi pago
+    <i class="fas fa-check-circle"></i> Ya realicé mi pago
   </button>
   <button class="btn btn-blk" id="btnClsPay" style="margin-top:8px;border:none;background:transparent;color:#9CA3AF;font-weight:500;font-size:13px">Volver sin descargar</button>
-  <div style="text-align:center;margin-top:10px;font-size:10px;color:#D1D5DB"><i class="fas fa-shield-alt"></i> Pago 100% seguro via PayPal</div>
+  <div style="text-align:center;margin-top:10px;font-size:10px;color:#D1D5DB"><i class="fas fa-shield-alt"></i> Pago 100% seguro · Nequi · Daviplata · Tarjetas · PSE</div>
 </div>
 </div>
 
@@ -335,11 +332,24 @@ body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%
 (function(){
 'use strict';
 
-var PAYPAL_LINK='https://paypal.me/chujitso/2';
+// ================================================================
+// 1. DETECTOR DE PAGO WOMPI
+// Si el usuario vuelve de Wompi, la URL tendrá ?pago=ok
+// ================================================================
+var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('pago') === 'ok') {
+    var PAGADO=true;
+    // Limpiamos la URL para que no se vea el parámetro
+    window.history.replaceState({}, document.title, window.location.pathname);
+    // Avisamos al usuario
+    setTimeout(function(){ toast('¡Pago exitoso! Tu PDF está desbloqueado.','ok', 5000); }, 1500);
+} else {
+    var PAGADO=false;
+}
+
 var UVT=47000;
 var ANIO=2025;
-var DEMO=false;
-var PAGADO=false;
+var DEMO=false; // Modo producción activado
 
 var TOPES={salud:25,pension:25,donaciones:30,vivienda:100,dependientes:32};
 var EX_PCT=0.25;
@@ -559,40 +569,7 @@ document.addEventListener('DOMContentLoaded',function(){
         else{document.getElementById('mPay').classList.add('act');}
     });
 
-    // INICIALIZAR PAYPAL - Renderiza el boton dorado oficial de PayPal
-    if(typeof paypal!=='undefined'){
-        try{
-            paypal.Buttons({
-                style:{shape:'rect',color:'gold',layout:'vertical',label:'paypal'},
-                createOrder:function(data,actions){
-                    return actions.order.create({
-                        purchase_units:[{
-                            amount:{value:'2.00',currency_code:'USD'},
-                            description:'RentaFacil - Hoja de Trabajo PDF'
-                        }]
-                    });
-                },
-                onApprove:function(data,actions){
-                    return actions.order.capture().then(function(){
-                        PAGADO=true;
-                        document.getElementById('mPay').classList.remove('act');
-                        toast('Pago exitoso! Descargando PDF...','ok',4000);
-                        setTimeout(genPDF,500);
-                    });
-                },
-                onError:function(){
-                    toast('Error en el pago. Usa el enlace de respaldo o el boton Ya pague.','err');
-                    document.getElementById('paypal-fallback').style.display='block';
-                }
-            }).render('#paypal-button-container');
-        }catch(e){
-            document.getElementById('paypal-fallback').style.display='block';
-        }
-    }else{
-        document.getElementById('paypal-fallback').style.display='block';
-    }
-
-    // BOTON YA PAGUE
+    // BOTON YA PAGUE (Respaldo de confianza)
     document.getElementById('btnYaPague').addEventListener('click',function(){
         PAGADO=true;document.getElementById('mPay').classList.remove('act');toast('Pago confirmado. Descargando PDF...','ok',4000);genPDF();
     });
